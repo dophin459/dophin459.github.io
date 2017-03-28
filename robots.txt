@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+Allow: /archives/
+
+Disallow: /vendors/
+Disallow: /js/
+Disallow: /css/
+Disallow: /fonts/
+Disallow: /vendors/
+Disallow: /fancybox/
+
+Sitemap: http://dophin459.coding.me/search.xml
+
+Sitemap: http://dophin459.coding.me/sitemap.xml
+Sitemap: http://dophin459.coding.me/baidusitemap.xml
