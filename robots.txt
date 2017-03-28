@@ -9,7 +9,7 @@ Disallow: /fonts/
 Disallow: /vendors/
 Disallow: /fancybox/
 
-Sitemap: http://dophin459.coding.me/search.xml
+Sitemap: http://dophin459.coding.net/search.xml
 
-Sitemap: http://dophin459.coding.me/sitemap.xml
-Sitemap: http://dophin459.coding.me/baidusitemap.xml
+Sitemap: http://dophin459.coding.net/sitemap.xml
+Sitemap: http://dophin459.coding.net/baidusitemap.xml
