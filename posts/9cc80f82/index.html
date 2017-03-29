@@ -89,7 +89,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="golang,go语言,编程语言," />
+  <meta name="keywords" content="以太坊,智能合约,web3js," />
 
 
 
@@ -105,16 +105,16 @@
 
 
 
-<meta name="description" content="Go语言是由Google的三位工程师开发的一种静态类型、编译型、具有垃圾回收功能的编程语言，于2009年正式发布，从2015年开始迅速流行起来。Go的语言特性简单，易学易用，是一种比较轻量级的语言，有C语言基础的人很容易上手，它具有独特的并发机制，非常容易写出高并发的程序，并且标准库中有丰富的网络库、各种编码/解码库、加密算法库等，开发非常方便。著名的Docker容器就是Go语言写的，近一两年流行">
+<meta name="description" content="web3.js是以太坊提供的一个Javascript库，它封装了以太坊的JSON RPC API，提供了一系列与区块链交互的Javascript对象和函数，包括查看网络状态，查看本地账户、查看交易和区块、发送交易、编译/部署智能合约、调用智能合约等，其中最重要的就是与智能合约交互的API。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Go语言安装教程">
-<meta property="og:url" content="http://dophin459.coding.me/posts/1c3f4ffd/index.html">
+<meta property="og:title" content="以太坊开发实战：通过web3.js与智能合约交互">
+<meta property="og:url" content="http://dophin459.coding.me/posts/9cc80f82/index.html">
 <meta property="og:site_name" content="zhangdf's Blog">
-<meta property="og:description" content="Go语言是由Google的三位工程师开发的一种静态类型、编译型、具有垃圾回收功能的编程语言，于2009年正式发布，从2015年开始迅速流行起来。Go的语言特性简单，易学易用，是一种比较轻量级的语言，有C语言基础的人很容易上手，它具有独特的并发机制，非常容易写出高并发的程序，并且标准库中有丰富的网络库、各种编码/解码库、加密算法库等，开发非常方便。著名的Docker容器就是Go语言写的，近一两年流行">
-<meta property="og:updated_time" content="2017-03-29T07:37:54.953Z">
+<meta property="og:description" content="web3.js是以太坊提供的一个Javascript库，它封装了以太坊的JSON RPC API，提供了一系列与区块链交互的Javascript对象和函数，包括查看网络状态，查看本地账户、查看交易和区块、发送交易、编译/部署智能合约、调用智能合约等，其中最重要的就是与智能合约交互的API。">
+<meta property="og:updated_time" content="2017-03-29T10:21:58.579Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Go语言安装教程">
-<meta name="twitter:description" content="Go语言是由Google的三位工程师开发的一种静态类型、编译型、具有垃圾回收功能的编程语言，于2009年正式发布，从2015年开始迅速流行起来。Go的语言特性简单，易学易用，是一种比较轻量级的语言，有C语言基础的人很容易上手，它具有独特的并发机制，非常容易写出高并发的程序，并且标准库中有丰富的网络库、各种编码/解码库、加密算法库等，开发非常方便。著名的Docker容器就是Go语言写的，近一两年流行">
+<meta name="twitter:title" content="以太坊开发实战：通过web3.js与智能合约交互">
+<meta name="twitter:description" content="web3.js是以太坊提供的一个Javascript库，它封装了以太坊的JSON RPC API，提供了一系列与区块链交互的Javascript对象和函数，包括查看网络状态，查看本地账户、查看交易和区块、发送交易、编译/部署智能合约、调用智能合约等，其中最重要的就是与智能合约交互的API。">
 
 
 
@@ -142,13 +142,13 @@
 
 
 
-  <link rel="canonical" href="http://dophin459.coding.me/posts/1c3f4ffd/"/>
+  <link rel="canonical" href="http://dophin459.coding.me/posts/9cc80f82/"/>
 
 
 
 
 
-  <title> Go语言安装教程 | zhangdf's Blog </title>
+  <title> 以太坊开发实战：通过web3.js与智能合约交互 | zhangdf's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -321,7 +321,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://dophin459.coding.me/posts/1c3f4ffd/">
+    <link itemprop="mainEntityOfPage" href="http://dophin459.coding.me/posts/9cc80f82/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhangdaofeng">
@@ -342,7 +342,7 @@
             
             
               
-                Go语言安装教程
+                以太坊开发实战：通过web3.js与智能合约交互
               
             
           </h1>
@@ -357,8 +357,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-26T21:21:15+08:00">
-                2017-03-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-28T17:04:03+08:00">
+                2017-03-28
               </time>
             
 
@@ -380,8 +380,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/编程语言/" itemprop="url" rel="index">
-                    <span itemprop="name">编程语言</span>
+                  <a href="/categories/以太坊开发/" itemprop="url" rel="index">
+                    <span itemprop="name">以太坊开发</span>
                   </a>
                 </span>
 
@@ -397,7 +397,7 @@
 
           
           
-             <span id="/posts/1c3f4ffd/" class="leancloud_visitors" data-flag-title="Go语言安装教程">
+             <span id="/posts/9cc80f82/" class="leancloud_visitors" data-flag-title="以太坊开发实战：通过web3.js与智能合约交互">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -426,30 +426,50 @@
       
 
       
-        <p>Go语言是由Google的三位工程师开发的一种静态类型、编译型、具有垃圾回收功能的编程语言，于2009年正式发布，从2015年开始迅速流行起来。Go的语言特性简单，易学易用，是一种比较轻量级的语言，有C语言基础的人很容易上手，它具有独特的并发机制，非常容易写出高并发的程序，并且标准库中有丰富的网络库、各种编码/解码库、加密算法库等，开发非常方便。著名的Docker容器就是Go语言写的，近一两年流行的区块链技术中的代表者以太坊和HyperLedger也是用Go语言写的。</p>
+        <p><a href="https://github.com/ethereum/wiki/wiki/JavaScript-API" target="_blank" rel="external">web3.js</a>是以太坊提供的一个Javascript库，它封装了以太坊的<a href="https://github.com/ethereum/wiki/wiki/JSON-RPC" target="_blank" rel="external">JSON RPC API</a>，提供了一系列与区块链交互的Javascript对象和函数，包括查看网络状态，查看本地账户、查看交易和区块、发送交易、编译/部署智能合约、调用智能合约等，其中最重要的就是与智能合约交互的API。</p>
 <a id="more"></a>
-<p>下面介绍在Linux和Windows系统上安装Go语言的步骤。</p>
-<p>首先下载安装包，可以去<a href="http://golang.org" target="_blank" rel="external">go语言官网</a>下载，如果没有翻墙，可以去<a href="http://www.golangtc.com/download" target="_blank" rel="external">go语言中文网</a>下载对应系统的安装包，目前go语言最新版本是1.8，本文以1.7.3版本为例。</p>
-<h1 id="Linux系统安装方法"><a href="#Linux系统安装方法" class="headerlink" title="Linux系统安装方法"></a>Linux系统安装方法</h1><p>以64位Ubuntu14.04为例：</p>
-<p><strong>一、下载安装包</strong></p>
-<p>下载安装包 go1.7.3.linux-amd64.tar.gz</p>
-<p><strong>二、解压缩到/usr/local</strong></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ sudo tar -C /usr/<span class="built_in">local</span> -xzf go1.7.3.linux-amd64.tar.gz</div></pre></td></tr></table></figure>
-<p>这会将go语言安装到 /usr/local/go 中</p>
-<p><strong>三、添加到环境变量</strong></p>
-<p>将/usr/local/go/bin添加到PATH环境变量中，编辑~/.bashrc文件，在文件最后加入下面一行代码：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/usr/<span class="built_in">local</span>/go/bin</div></pre></td></tr></table></figure></p>
-<p><strong>四、设置GOPATH</strong></p>
-<p>GOPATH用于指定系统中的一个目录，go语言的所有项目都放在这个目录中，比如我想把go语言项目都放在$HOME/work中，那就把GOPATH设置成这个目录：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="built_in">export</span> GOPATH=<span class="variable">$HOME</span>/work</div></pre></td></tr></table></figure></p>
-<p>将上面一行代码添加到<code>~/.bashrc</code>中即可</p>
-<p>最后，别忘了执行以下命令使修改后的<code>~/.bashrc</code>生效：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ <span class="built_in">source</span> ~/.bashrc</div></pre></td></tr></table></figure></p>
-<p>在命令行中执行 <code>go version</code> 命令，如果输出版本信息，则安装成功。</p>
-<h1 id="Windows系统安装方法"><a href="#Windows系统安装方法" class="headerlink" title="Windows系统安装方法"></a>Windows系统安装方法</h1><p>以64位win10为例：</p>
-<p><strong>一、下载安装程序</strong></p>
-<p>下载安装程序 go1.7.3.windows-amd64.msi 并安装</p>
-<p><strong>二、设置GOPATH</strong></p>
-<p>“我的电脑”-&gt;右键“属性”-&gt;“高级系统设置”-&gt;“环境变量”，在系统变量那选择“新建”，输入变量名GOPATH，变量值D:\mygo，保存即可，其中变量值可以随意指定一个空目录作为go项目的根目录。</p>
-<p>在命令行执行 <code>go env</code> 命令 可以查看GOPATH是否正确设置。</p>
-<h1 id="查看文档"><a href="#查看文档" class="headerlink" title="查看文档"></a>查看文档</h1><p>在命令行中执行 <code>godoc -http=:6060</code> ,会在本机启动go语言文档服务器，不要关闭命令行窗口，在浏览器地址栏输入 <code>http://localhost:6060/</code> 即可在本地查看go语言的文档。</p>
+<p>下面就介绍如何使用web3.js提供的接口调用智能合约。  </p>
+<h1 id="系统和软件"><a href="#系统和软件" class="headerlink" title="系统和软件"></a>系统和软件</h1><ul>
+<li>Ubuntu 16.04 64位</li>
+<li>nodejs 6.10.0</li>
+<li>npm 3.10.10</li>
+</ul>
+<h1 id="示例合约"><a href="#示例合约" class="headerlink" title="示例合约"></a>示例合约</h1><p>本文以下面的MetaCoin合约为例，说明在应用中使用web3.js操作智能合约的方法。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 本文中用到的MetaCoin合约</span></div><div class="line">pragma solidity ^<span class="number">0.4</span><span class="number">.2</span>;</div><div class="line"></div><div class="line">contract MetaCoin &#123;</div><div class="line">	mapping (<span class="function"><span class="params">address</span> =&gt;</span> uint) balances;</div><div class="line"></div><div class="line">	event Transfer(address indexed _from, address indexed _to, uint256 _value);</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">MetaCoin</span>(<span class="params"></span>) </span>&#123;</div><div class="line">		balances[tx.origin] = <span class="number">10000</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">sendCoin</span>(<span class="params">address receiver, uint amount</span>) <span class="title">returns</span>(<span class="params">bool sufficient</span>) </span>&#123;</div><div class="line">		<span class="keyword">if</span> (balances[msg.sender] &lt; amount) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">		balances[msg.sender] -= amount;</div><div class="line">		balances[receiver] += amount;</div><div class="line">		Transfer(msg.sender, receiver, amount);</div><div class="line">		<span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">getBalance</span>(<span class="params">address addr</span>) <span class="title">returns</span>(<span class="params">uint</span>) </span>&#123;</div><div class="line">		<span class="keyword">return</span> balances[addr];</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这个合约有三个函数：  </p>
+<ul>
+<li>MetaCoin：构造函数，在合约被部署到区块链时执行</li>
+<li>getBalance：返回某账户的余额，它只读数据，不会修改数据</li>
+<li>sendCoin：向另一个账户发送指定数量的MetaCoin，它会改变状态变量balances  </li>
+</ul>
+<p>启动一个以太坊节点，将上面的合约部署到区块链中，并记录下合约的地址，可以通过truffle部署，具体参考<a href="http://dophin459.coding.me/posts/6dfb7cf8/">这篇文章</a>。接下来就可以按照下面的步骤在项目中通过web3.js来使用这个合约。 </p>
+<h1 id="添加web3到项目中"><a href="#添加web3到项目中" class="headerlink" title="添加web3到项目中"></a>添加web3到项目中</h1><p>首先新建一个Nodejs项目并初始化：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ mkdir web3<span class="built_in">test</span> &amp;&amp; <span class="built_in">cd</span> web3<span class="built_in">test</span></div><div class="line">$ npm init</div></pre></td></tr></table></figure></p>
+<p>会提示输入项目信息，全部默认即可。<br>接下来下载web3.js到项目中：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ npm install web3 --save</div></pre></td></tr></table></figure></p>
+<p>以上命令会将web3.js下载到web3test/node_modules目录下，其中<code>--save</code>参数会web3.js添加到package.json配置文件中。  </p>
+<h1 id="创建web3对象"><a href="#创建web3对象" class="headerlink" title="创建web3对象"></a>创建web3对象</h1><p>要使用web3.js与区块链交互，需要先创建web3对象，然后连接到以太坊节点。<br>在web3test目录下新建index.js文件，在其中输入以下代码：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> Web3 = <span class="built_in">require</span>(<span class="string">"web3"</span>);</div><div class="line"><span class="comment">// 创建web3对象</span></div><div class="line"><span class="keyword">var</span> web3 = <span class="keyword">new</span> Web3();</div><div class="line"><span class="comment">// 连接到以太坊节点</span></div><div class="line">web3.setProvider(<span class="keyword">new</span> Web3.providers.HttpProvider(<span class="string">"http://localhost:8545"</span>));</div></pre></td></tr></table></figure></p>
+<h1 id="获取已部署的合约实例"><a href="#获取已部署的合约实例" class="headerlink" title="获取已部署的合约实例"></a>获取已部署的合约实例</h1><p>要使用智能合约，必须先从区块链中获取到合约实例，获取合约实例需要合约的ABI和合约的地址：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 合约ABI</span></div><div class="line"><span class="keyword">var</span> abi = [&#123;<span class="string">"constant"</span>:<span class="literal">false</span>,<span class="string">"inputs"</span>:[&#123;<span class="string">"name"</span>:<span class="string">"receiver"</span>,<span class="string">"type"</span>:<span class="string">"address"</span>&#125;,&#123;<span class="string">"name"</span>:<span class="string">"amount"</span>,<span class="string">"type"</span>:<span class="string">"uint256"</span>&#125;],<span class="string">"name"</span>:<span class="string">"sendCoin"</span>,<span class="string">"outputs"</span>:[&#123;<span class="string">"name"</span>:<span class="string">"sufficient"</span>,<span class="string">"type"</span>:<span class="string">"bool"</span>&#125;],<span class="string">"payable"</span>:<span class="literal">false</span>,<span class="string">"type"</span>:<span class="string">"function"</span>&#125;,&#123;<span class="string">"constant"</span>:<span class="literal">false</span>,<span class="string">"inputs"</span>:[&#123;<span class="string">"name"</span>:<span class="string">"addr"</span>,<span class="string">"type"</span>:<span class="string">"address"</span>&#125;],<span class="string">"name"</span>:<span class="string">"getBalance"</span>,<span class="string">"outputs"</span>:[&#123;<span class="string">"name"</span>:<span class="string">""</span>,<span class="string">"type"</span>:<span class="string">"uint256"</span>&#125;],<span class="string">"payable"</span>:<span class="literal">false</span>,<span class="string">"type"</span>:<span class="string">"function"</span>&#125;,&#123;<span class="string">"inputs"</span>:[],<span class="string">"payable"</span>:<span class="literal">false</span>,<span class="string">"type"</span>:<span class="string">"constructor"</span>&#125;,&#123;<span class="string">"anonymous"</span>:<span class="literal">false</span>,<span class="string">"inputs"</span>:[&#123;<span class="string">"indexed"</span>:<span class="literal">true</span>,<span class="string">"name"</span>:<span class="string">"_from"</span>,<span class="string">"type"</span>:<span class="string">"address"</span>&#125;,&#123;<span class="string">"indexed"</span>:<span class="literal">true</span>,<span class="string">"name"</span>:<span class="string">"_to"</span>,<span class="string">"type"</span>:<span class="string">"address"</span>&#125;,&#123;<span class="string">"indexed"</span>:<span class="literal">false</span>,<span class="string">"name"</span>:<span class="string">"_value"</span>,<span class="string">"type"</span>:<span class="string">"uint256"</span>&#125;],<span class="string">"name"</span>:<span class="string">"Transfer"</span>,<span class="string">"type"</span>:<span class="string">"event"</span>&#125;];</div><div class="line"><span class="comment">// 合约地址</span></div><div class="line"><span class="keyword">var</span> address = <span class="string">"0xb2cdd356e58280906ce53e1665697b50f88aac56"</span>;</div><div class="line"><span class="comment">// 通过ABI和地址获取已部署的合约对象</span></div><div class="line"><span class="keyword">var</span> metacoin = web3.eth.contract(abi).at(address);</div></pre></td></tr></table></figure></p>
+<p><code>metacoin</code>就是获取到的合约对象实例，此时<code>metacoin</code>对象中就包含了与合约函数同名的Javascript函数，之后就可以通过<code>metacoin</code>对象来调用合约中的函数了。  </p>
+<h1 id="调用合约函数"><a href="#调用合约函数" class="headerlink" title="调用合约函数"></a>调用合约函数</h1><p><code>MetaCoin</code>合约中有两个函数：<code>getBalance</code>和<code>sendCoin</code>，可以通过<code>metacoin</code>对象直接调用这两个函数。  </p>
+<p>首先来看<code>getBalance</code>，由于getBalance函数只是从区块链中读数据，而不修改数据，因此我们通过在<code>getBalance</code>后面加上<code>.call()</code>的方式调用：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> account_one = web3.eth.accounts[<span class="number">0</span>];</div><div class="line"></div><div class="line"><span class="keyword">var</span> account_one_balance = metacoin.getBalance.call(account_one);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"account one balance: "</span>, account_one_balance.toNumber());</div></pre></td></tr></table></figure></p>
+<p>这里：  </p>
+<ul>
+<li>在getBalance后加上<code>.call()</code>来显式指明用<code>call</code>的方式调用</li>
+<li>通过<code>call</code>的方式调用可以得到<code>getBalance</code>函数的返回值</li>
+<li>通过<code>call</code>的方式调用的函数只在节点本地虚拟机中执行，不会产生交易，不会花费费用，不会修改数据  </li>
+</ul>
+<p>下面来看<code>sendCoin</code>函数，由于<code>sendCoin</code>要修改合约内部的数据，所以要使<code>sendCoin</code>生效，必须要向区块链发送交易，可以在<code>sendCoin</code>后面加上<code>.sendTransaction()</code>来指明这是一笔交易：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> account_one = web3.eth.accounts[<span class="number">0</span>];</div><div class="line"><span class="keyword">var</span> account_two = web3.eth.accounts[<span class="number">1</span>];</div><div class="line"><span class="comment">// 提交交易到区块链，会立即返回交易hash，但是交易要等到被矿工收录到区块中后才生效</span></div><div class="line"><span class="keyword">var</span> txhash = metacoin.sendCoin.sendTransaction(account_two, <span class="number">100</span>, &#123;<span class="attr">from</span>:account_one&#125;);</div><div class="line"><span class="built_in">console</span>.log(txhash);</div></pre></td></tr></table></figure></p>
+<p>这里：    </p>
+<ul>
+<li>在<code>sendCoin</code>函数后加上<code>.sendTransaction()</code>指明要向区块链发送交易</li>
+<li>合约代码中<code>sendCoin</code>函数只有两个参数，而在web3中通过<code>.sendTransaction()</code>调用合约函数的时候需要增加最后一个参数，它是一个javascript对象，里面可以指定<code>from</code>/<code>value</code>/<code>gas</code>等属性，上面的例子用<code>from</code>来指定交易的发送者</li>
+<li>上面的调用语句执行后，会向区块链提交一笔交易，这笔交易的发送者是<code>account_one</code>，接收者是<code>metacoin</code>的地址，交易的作用是以<code>account_two</code>和<code>100</code>作为参数执行合约的<code>sendCoin</code>函数</li>
+<li>函数会立即返回交易的hash，表明交易已经提交到区块链，但是并不知道交易何时处理完成，交易要等到被旷工收录到区块中后才会生效</li>
+</ul>
+<h1 id="监听合约事件"><a href="#监听合约事件" class="headerlink" title="监听合约事件"></a>监听合约事件</h1><p>当通过<code>.sendTransaction()</code>调用合约的时候，交易会被提交到区块链进行处理，这个处理需要一定的时间，如果需要等交易完成之后再执行其他操作，就必须要知道交易何时完成，那么如何知道交易何时完成呢？可以通过监听合约事件来实现。  </p>
+<p>在合约中可以定义事件，事件可以带有参数，在合约函数内部完成某些操作时，可以触发事件，向外界传达一些信息。例如，在MetaCoin合约中定义了一个事件叫做<code>Transfer</code>，表示一个转账的事件，它带有三个参数：交易的发送者、接受者、转账数量。在sendCoin函数中，转账成功后就会触发Transfer事件，将对应的参数传给该事件，这样外部监听到事件后，可以取出事件的参数来获得交易发送者、接收者、数量。同时事件中还带有其他信息，比如交易hash等。  </p>
+<p>在web3中使用事件，要首先获取事件对象，然后监听事件，如果事件发生，就会在回调函数中获取到事件信息：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 获取事件对象</span></div><div class="line"><span class="keyword">var</span> myEvent = metacoin.Transfer();</div><div class="line"><span class="comment">// 监听事件，监听到事件后会执行回调函数</span></div><div class="line">myEvent.watch(<span class="function"><span class="keyword">function</span>(<span class="params">err, result</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (!err) &#123;</div><div class="line">        <span class="built_in">console</span>.log(result);</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="built_in">console</span>.log(err);</div><div class="line">    &#125;</div><div class="line">    myEvent.stopWatching();</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// 输出：</span></div><div class="line">&#123; <span class="attr">address</span>: <span class="string">'0xb2cdd356e58280906ce53e1665697b50f88aac56'</span>,</div><div class="line">  <span class="attr">blockNumber</span>: <span class="number">651</span>,</div><div class="line">  <span class="attr">transactionIndex</span>: <span class="number">0</span>,</div><div class="line">  <span class="attr">transactionHash</span>: <span class="string">'0xcc71bc2824cc84d1ee831c46189e3a80cf0af05697ba0370693aa97390c8067b'</span>,</div><div class="line">  <span class="attr">blockHash</span>: <span class="string">'0x1d53f04206f3926d0f311b1230a9dd0b0c5aadac35b169a6a609e384ab130c6f'</span>,</div><div class="line">  <span class="attr">logIndex</span>: <span class="number">0</span>,</div><div class="line">  <span class="attr">removed</span>: <span class="literal">false</span>,</div><div class="line">  <span class="attr">event</span>: <span class="string">'Transfer'</span>,</div><div class="line">  <span class="attr">args</span>: </div><div class="line">   &#123; <span class="attr">_from</span>: <span class="string">'0x68b73956d704007514e9257813bdc58cdf3c969a'</span>,</div><div class="line">     <span class="attr">_to</span>: <span class="string">'0x9c3c1a2f5ef913fac44f0348a78f68d835f3f26e'</span>,</div><div class="line">     <span class="attr">_value</span>: &#123; [<span class="built_in">String</span>: <span class="string">'100'</span>] s: <span class="number">1</span>, <span class="attr">e</span>: <span class="number">2</span>, <span class="attr">c</span>: [<span class="built_in">Object</span>] &#125; &#125; &#125;</div></pre></td></tr></table></figure></p>
+<p>从输出可以看出，获取到的事件信息包括事件的参数、事件名、区块号、交易hash等。  </p>
+<p>通过检测事件中的transactionHash与调用合约函数返回的交易hash是否一致，可以判定某一笔交易是否已完成：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> account_one = web3.eth.accounts[<span class="number">0</span>];</div><div class="line"><span class="keyword">var</span> account_two = web3.eth.accounts[<span class="number">1</span>];</div><div class="line"></div><div class="line"><span class="keyword">var</span> account_one_balance = metacoin.getBalance.call(account_one);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">"account one balance:"</span>, account_one_balance.toNumber());</div><div class="line"></div><div class="line"><span class="keyword">var</span> txhash = metacoin.sendCoin.sendTransaction(account_two, <span class="number">100</span>, &#123; <span class="attr">from</span>: account_one &#125;);</div><div class="line"></div><div class="line"><span class="keyword">var</span> myEvent = metacoin.Transfer();</div><div class="line">myEvent.watch(<span class="function"><span class="keyword">function</span> (<span class="params">err, result</span>) </span>&#123;</div><div class="line">    <span class="keyword">if</span> (!err) &#123;</div><div class="line">        <span class="keyword">if</span> (result.transactionHash == txhash) &#123;</div><div class="line">            <span class="keyword">var</span> account_one_balance = metacoin.getBalance.call(account_one);</div><div class="line">            <span class="built_in">console</span>.log(<span class="string">"account one balance after sendCoin:"</span>, account_one_balance.toNumber());</div><div class="line">        &#125;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="built_in">console</span>.log(err);</div><div class="line">    &#125;</div><div class="line">    myEvent.stopWatching();</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">// 输出：</span></div><div class="line">account one balance: <span class="number">7000</span></div><div class="line">account one balance after sendCoin: <span class="number">6900</span></div></pre></td></tr></table></figure></p>
+<p>watch中的回调函数如果被执行，说明事件已被触发，也就是说某笔交易已经处理完，检查交易hash是否一致，可以判定产生这个事件的交易是否是自己发送的交易，如果是，就可以进行其他操作，比如查询最新的余额。</p>
 
       
     </div>
@@ -500,11 +520,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/golang/" rel="tag"># golang</a>
+            <a href="/tags/以太坊/" rel="tag"># 以太坊</a>
           
-            <a href="/tags/go语言/" rel="tag"># go语言</a>
+            <a href="/tags/智能合约/" rel="tag"># 智能合约</a>
           
-            <a href="/tags/编程语言/" rel="tag"># 编程语言</a>
+            <a href="/tags/web3js/" rel="tag"># web3js</a>
           
         </div>
       
@@ -517,8 +537,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/posts/4a17b156/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/posts/6dfb7cf8/" rel="next" title="以太坊开发实战：Truffle开发环境配置及使用">
+                <i class="fa fa-chevron-left"></i> 以太坊开发实战：Truffle开发环境配置及使用
               </a>
             
           </div>
@@ -527,8 +547,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/posts/4c678d5d/" rel="prev" title="以太坊开发实战：geth客户端安装">
-                以太坊开发实战：geth客户端安装 <i class="fa fa-chevron-right"></i>
+              <a href="/posts/79b3ba3d/" rel="prev" title="以太坊开发实战：通过truffle-contract与智能合约交互">
+                以太坊开发实战：通过truffle-contract与智能合约交互 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -678,7 +698,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux系统安装方法"><span class="nav-number">1.</span> <span class="nav-text">Linux系统安装方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Windows系统安装方法"><span class="nav-number">2.</span> <span class="nav-text">Windows系统安装方法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查看文档"><span class="nav-number">3.</span> <span class="nav-text">查看文档</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#系统和软件"><span class="nav-number">1.</span> <span class="nav-text">系统和软件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#示例合约"><span class="nav-number">2.</span> <span class="nav-text">示例合约</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#添加web3到项目中"><span class="nav-number">3.</span> <span class="nav-text">添加web3到项目中</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建web3对象"><span class="nav-number">4.</span> <span class="nav-text">创建web3对象</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#获取已部署的合约实例"><span class="nav-number">5.</span> <span class="nav-text">获取已部署的合约实例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#调用合约函数"><span class="nav-number">6.</span> <span class="nav-text">调用合约函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#监听合约事件"><span class="nav-number">7.</span> <span class="nav-text">监听合约事件</span></a></li></ol></div>
             
 
           </div>
