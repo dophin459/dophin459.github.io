@@ -89,7 +89,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="go-ethereum,geth,以太坊," />
 
 
 
@@ -105,15 +105,16 @@
 
 
 
-<meta name="description" content="欢迎">
-<meta property="og:type" content="website">
-<meta property="og:title" content="zhangdf's Blog">
-<meta property="og:url" content="http://dophin459.coding.me/tags/golang/index.html">
+<meta name="description" content="geth是以太坊的官方客户端，它是一个命令行工具，提供很多命令和选项，可以运行以太坊节点、创建和管理账户、发送交易、挖矿、部署智能合约等。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="以太坊开发实战：geth客户端安装">
+<meta property="og:url" content="http://dophin459.coding.me/posts/4c678d5d/index.html">
 <meta property="og:site_name" content="zhangdf's Blog">
-<meta property="og:description" content="欢迎">
+<meta property="og:description" content="geth是以太坊的官方客户端，它是一个命令行工具，提供很多命令和选项，可以运行以太坊节点、创建和管理账户、发送交易、挖矿、部署智能合约等。">
+<meta property="og:updated_time" content="2017-03-29T02:14:02.837Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="zhangdf's Blog">
-<meta name="twitter:description" content="欢迎">
+<meta name="twitter:title" content="以太坊开发实战：geth客户端安装">
+<meta name="twitter:description" content="geth是以太坊的官方客户端，它是一个命令行工具，提供很多命令和选项，可以运行以太坊节点、创建和管理账户、发送交易、挖矿、部署智能合约等。">
 
 
 
@@ -141,13 +142,13 @@
 
 
 
-  <link rel="canonical" href="http://dophin459.coding.me/tags/golang/"/>
+  <link rel="canonical" href="http://dophin459.coding.me/posts/4c678d5d/"/>
 
 
 
 
 
-  <title> 标签: golang | zhangdf's Blog </title>
+  <title> 以太坊开发实战：geth客户端安装 | zhangdf's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -172,7 +173,7 @@
     
   
 
-  <div class="container sidebar-position-right  ">
+  <div class="container sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -310,46 +311,242 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        golang
-        <small>标签</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://dophin459.coding.me/posts/4c678d5d/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangdaofeng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhangdf's Blog">
+    </span>
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                以太坊开发实战：geth客户端安装
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-26T21:58:10+08:00">
+                2017-03-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/以太坊开发/" itemprop="url" rel="index">
+                    <span itemprop="name">以太坊开发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/posts/4c678d5d/" class="leancloud_visitors" data-flag-title="以太坊开发实战：geth客户端安装">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <p>geth是以太坊的官方客户端，它是一个命令行工具，提供很多命令和选项，可以运行以太坊节点、创建和管理账户、发送交易、挖矿、部署智能合约等。</p>
+<a id="more"></a>
+<p>下面介绍geth的三种安装方法：</p>
+<ul>
+<li>直接下载可执行文件</li>
+<li>在线安装</li>
+<li>从源码编译安装</li>
+</ul>
+<h2 id="方法一-直接下载可执行文件"><a href="#方法一-直接下载可执行文件" class="headerlink" title="方法一 直接下载可执行文件"></a>方法一 直接下载可执行文件</h2><p>最简单的方法是直接下载可执行文件，以太坊开发团队提供了各个系统的编译好的geth可执行文件，可以去<a href="https://geth.ethereum.org/downloads/" target="_blank" rel="external">官方下载地址</a>或<a href="http://ethfans.org/wikis/Ethereum-Geth-Mirror" target="_blank" rel="external">国内镜像</a>下载适合你系统版本的压缩包，解压缩后直接运行就可以。在命令行中输入 <code>geth help</code> 可查看geth的用法。  </p>
+<p><strong>注意1</strong>：geth是一个命令行工具，需要在命令行中运行geth，windows用户不要直接双击geth.exe。<br><strong>注意2</strong>：如果不加任何参数直接运行 <code>geth</code> ，会自动连接到以太坊公网，此时会开始同步区块，在Linux系统中，区块数据默认存储在<code>~/.ethereum</code>中。  </p>
+<h2 id="方法二-在线安装"><a href="#方法二-在线安装" class="headerlink" title="方法二 在线安装"></a>方法二 在线安装</h2><p>Ubuntu用户可以选择在线安装的方式，在终端中依次执行以下命令即可：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ sudo add-apt-repository -y ppa:ethereum/ethereum</div><div class="line">$ sudo apt-get update</div><div class="line">$ sudo apt-get install ethereum</div></pre></td></tr></table></figure></p>
+<p>安装完成后执行 <code>geth help</code> 查看geth的用法。  </p>
+<h2 id="方法三-从源码编译安装"><a href="#方法三-从源码编译安装" class="headerlink" title="方法三 从源码编译安装"></a>方法三 从源码编译安装</h2><p>编译安装推荐使用Linux系统，本文以64位的Ubuntu14.04系统为例。<br>geth是用go语言写的，编译geth源码需要go语言和C语言编译器，因此需要先<a href="https://my.oschina.net/u/2349981/blog/856949" target="_blank" rel="external">安装go语言</a>，go语言版本推荐用go1.7及以上。</p>
+<h3 id="使用make编译"><a href="#使用make编译" class="headerlink" title="使用make编译"></a>使用make编译</h3><p>首先下载geth源码 <a href="https://github.com/ethereum/go-ethereum/releases" title="go-ethereum" target="_blank" rel="external">go-ethereum</a>，这里以 <code>go-ethereum-1.5.6.tar.gz</code> 为例：  </p>
+<p>接下来解压缩源码：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ tar -xzf go-ethereum-1.5.6.tar.gz</div></pre></td></tr></table></figure></p>
+<p>用make工具进行编译：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> go-ethereum-1.5.6</div><div class="line">$ make geth</div></pre></td></tr></table></figure></p>
+<p>make会执行build目录下的编译脚本，编译脚本会调用go语言编译器进行编译。等待十几秒，编译就完成了，此时会在 <code>go-ethereum-1.5.6/build/bin</code> 中生成geth可执行文件。  </p>
+<p>输入 <code>geth help</code> 命令，会显示geth所有的命令和选项：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> build/bin</div><div class="line">$ ./geth <span class="built_in">help</span></div></pre></td></tr></table></figure></p>
+<h3 id="使用go语言编译工具编译"><a href="#使用go语言编译工具编译" class="headerlink" title="使用go语言编译工具编译"></a>使用go语言编译工具编译</h3><p>如果熟悉go语言，可以直接使用go语言的编译工具编译。  </p>
+<p>首先下载go-ethereum项目源码：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ go get <span class="_">-d</span> github.com/ethereum/go-ethereum</div></pre></td></tr></table></figure></p>
+<p>上面的命令会下载go-ethereum源码到<code>GOPATH/src/github.com/ethereum/go-ethereum</code>，同时会下载相关的依赖包，在国内网络环境下，如果不翻墙，下载通常会失败，此时可以参考下面的<strong>手动下载</strong>方法。  </p>
+<p>下载完成后，通过以下命令编译：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ go install -v github.com/ethereum/go-ethereum/cmd/geth</div></pre></td></tr></table></figure></p>
+<p>等待十几秒，编译完成后，会在<code>GOPATH/bin</code>目录下生成geth可执行文件。  </p>
+<p><strong>注</strong>：如果<code>go get</code>命令下载很慢或失败，可以采用<strong>手动下载</strong>：首先下载 <code>go-ethereum-1.5.6.tar.gz</code> ，然后解压到<code>GOPATH/src/github.com/ethereum/go-ethereum</code>，还要到<a href="http://www.golangtc.com/download/package" target="_blank" rel="external">http://www.golangtc.com/download/package</a>下载<code>golang.org.x.net.tar.gz</code>，并将其解压到<code>GOPATH/src</code>中。解压之后的目录结构应该是这样的：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">GOPATH/src</div><div class="line">├── github.com</div><div class="line">│   └── ethereum</div><div class="line">│       └── go-ethereum</div><div class="line">└── golang.org</div><div class="line">    └── x</div><div class="line">        └── net</div></pre></td></tr></table></figure></p>
+<p>之后再通过上面的<code>go install</code>命令编译安装即可。</p>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/posts/1c3f4ffd/" itemprop="url">
-              
-                <span itemprop="name">Go语言安装教程</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/uploads/wechatpay.png" alt="zhangdaofeng WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/uploads/alipay.jpg" alt="zhangdaofeng Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-03-26T21:21:15+08:00"
-              content="2017-03-26" >
-          03-26
-        </time>
-      </div>
 
-    </header>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/go-ethereum/" rel="tag"># go-ethereum</a>
+          
+            <a href="/tags/geth/" rel="tag"># geth</a>
+          
+            <a href="/tags/以太坊/" rel="tag"># 以太坊</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/1c3f4ffd/" rel="next" title="Go语言安装教程">
+                <i class="fa fa-chevron-left"></i> Go语言安装教程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/posts/e47700bb/" rel="prev" title="以太坊开发实战：私有链搭建操作指南">
+                以太坊开发实战：私有链搭建操作指南 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </div>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -357,6 +554,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -376,8 +577,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -459,6 +669,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#方法一-直接下载可执行文件"><span class="nav-number">1.</span> <span class="nav-text">方法一 直接下载可执行文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法二-在线安装"><span class="nav-number">2.</span> <span class="nav-text">方法二 在线安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方法三-从源码编译安装"><span class="nav-number">3.</span> <span class="nav-text">方法三 从源码编译安装</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用make编译"><span class="nav-number">3.1.</span> <span class="nav-text">使用make编译</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用go语言编译工具编译"><span class="nav-number">3.2.</span> <span class="nav-text">使用go语言编译工具编译</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -555,6 +781,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 

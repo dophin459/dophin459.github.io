@@ -1,0 +1,1150 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="geth,以太坊,私有链," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="虽然以太坊是一个公有链系统，但是我们可以通过设置一些参数来运行自己的私有链节点，在自己的私有链上进行开发和测试不需要同步公有链数据，也不需要花钱来买以太币，节省存储空间和成本，而且很灵活很方便。本文介绍使用geth客户端搭建私有链的操作步骤，同时会解释在这个过程中用到的各个命令及选项的含义和作用，最后会介绍geth的Javascript Console中的一些常用功能。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="以太坊开发实战：私有链搭建操作指南">
+<meta property="og:url" content="http://dophin459.coding.me/posts/e47700bb/index.html">
+<meta property="og:site_name" content="zhangdf's Blog">
+<meta property="og:description" content="虽然以太坊是一个公有链系统，但是我们可以通过设置一些参数来运行自己的私有链节点，在自己的私有链上进行开发和测试不需要同步公有链数据，也不需要花钱来买以太币，节省存储空间和成本，而且很灵活很方便。本文介绍使用geth客户端搭建私有链的操作步骤，同时会解释在这个过程中用到的各个命令及选项的含义和作用，最后会介绍geth的Javascript Console中的一些常用功能。">
+<meta property="og:updated_time" content="2017-03-29T02:30:32.101Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="以太坊开发实战：私有链搭建操作指南">
+<meta name="twitter:description" content="虽然以太坊是一个公有链系统，但是我们可以通过设置一些参数来运行自己的私有链节点，在自己的私有链上进行开发和测试不需要同步公有链数据，也不需要花钱来买以太币，节省存储空间和成本，而且很灵活很方便。本文介绍使用geth客户端搭建私有链的操作步骤，同时会解释在这个过程中用到的各个命令及选项的含义和作用，最后会介绍geth的Javascript Console中的一些常用功能。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"hide","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://dophin459.coding.me/posts/e47700bb/"/>
+
+
+
+
+
+  <title> 以太坊开发实战：私有链搭建操作指南 | zhangdf's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">zhangdf's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://dophin459.coding.me/posts/e47700bb/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangdaofeng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhangdf's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                以太坊开发实战：私有链搭建操作指南
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-27T10:24:59+08:00">
+                2017-03-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/以太坊开发/" itemprop="url" rel="index">
+                    <span itemprop="name">以太坊开发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/posts/e47700bb/" class="leancloud_visitors" data-flag-title="以太坊开发实战：私有链搭建操作指南">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>虽然以太坊是一个公有链系统，但是我们可以通过设置一些参数来运行自己的私有链节点，在自己的私有链上进行开发和测试不需要同步公有链数据，也不需要花钱来买以太币，节省存储空间和成本，而且很灵活很方便。本文介绍使用geth客户端搭建私有链的操作步骤，同时会解释在这个过程中用到的各个命令及选项的含义和作用，最后会介绍geth的Javascript Console中的一些常用功能。</p>
+<a id="more"></a>
+<h2 id="系统和软件"><a href="#系统和软件" class="headerlink" title="系统和软件"></a>系统和软件</h2><ul>
+<li>Ubuntu 16.04 64位</li>
+<li>geth 1.5.6 <a href="https://my.oschina.net/u/2349981/blog/856956" target="_blank" rel="external">=&gt;(安装教程)</a></li>
+</ul>
+<h2 id="搭建私有链"><a href="#搭建私有链" class="headerlink" title="搭建私有链"></a>搭建私有链</h2><h3 id="一、准备创世区块配置文件"><a href="#一、准备创世区块配置文件" class="headerlink" title="一、准备创世区块配置文件"></a>一、准备创世区块配置文件</h3><p>以太坊支持自定义创世区块，要运行私有链，我们就需要定义自己的创世区块，创世区块信息写在一个json格式的配置文件中。首先将下面的内容保存到一个json文件中，例如genesis.json。<br><figure class="highlight json"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"coinbase"</span>   : <span class="string">"0x0000000000000000000000000000000000000000"</span>,</div><div class="line">  <span class="attr">"difficulty"</span> : <span class="string">"0x400"</span>,</div><div class="line">  <span class="attr">"extraData"</span>  : <span class="string">"0x0"</span>,</div><div class="line">  <span class="attr">"gasLimit"</span>   : <span class="string">"0x2fefd8"</span>,</div><div class="line">  <span class="attr">"nonce"</span>      : <span class="string">"0xdeadbeefdeadbeef"</span>,</div><div class="line">  <span class="attr">"mixhash"</span>    : <span class="string">"0x0000000000000000000000000000000000000000000000000000000000000000"</span>,</div><div class="line">  <span class="attr">"parentHash"</span> : <span class="string">"0x0000000000000000000000000000000000000000000000000000000000000000"</span>,</div><div class="line">  <span class="attr">"timestamp"</span>  : <span class="string">"0x00"</span>,</div><div class="line">  <span class="attr">"alloc"</span>      : &#123;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="二、初始化：写入创世区块"><a href="#二、初始化：写入创世区块" class="headerlink" title="二、初始化：写入创世区块"></a>二、初始化：写入创世区块</h3><p>准备好创世区块配置文件后，需要初始化区块链，将上面的创世区块信息写入到区块链中。首先要新建一个目录用来存放区块链数据，假设新建的数据目录为~/privatechain/data0，genesis.json保存在~/privatechain中，此时目录结构应该是这样的：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">privatechain</div><div class="line">├── data0</div><div class="line">└── genesis.json</div></pre></td></tr></table></figure></p>
+<p>接下来进入privatechain中，执行初始化命令：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> privatechain</div><div class="line">$ geth --datadir data0 init genesis.json</div></pre></td></tr></table></figure></p>
+<p>上面的命令的主体是<code>geth init</code>，表示初始化区块链，命令可以带有选项和参数，其中<code>--datadir</code>选项后面跟一个目录名，这里为<code>data0</code>，表示指定数据存放目录为<code>data0</code>，<code>genesis.json</code>是<code>init</code>命令的参数。  </p>
+<p>运行上面的命令，会读取genesis.json文件，根据其中的内容，将创世区块写入到区块链中。如果看到以下的输出内容，说明初始化成功了。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">I0322 10:52:44.585282 cmd/geth/chaincmd.go:131] successfully wrote genesis block and/or chain rule set: b240e0678c2a8f87cf350225b528e3d97688aad6d4d84ee84e405c7fc9e37e4e</div></pre></td></tr></table></figure></p>
+<p>初始化成功后，会在数据目录data0中生成geth和keystore两个文件夹，此时目录结构如下：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">privatechain</div><div class="line">├── data0</div><div class="line">│   ├── geth</div><div class="line">│   │   └── chaindata</div><div class="line">│   │       ├── 000002.log</div><div class="line">│   │       ├── CURRENT</div><div class="line">│   │       ├── LOCK</div><div class="line">│   │       ├── LOG</div><div class="line">│   │       └── MANIFEST-000003</div><div class="line">│   └── keystore</div><div class="line">└── genesis.json</div></pre></td></tr></table></figure></p>
+<p>其中geth/chaindata中存放的是区块数据，keystore中存放的是账户数据。  </p>
+<h3 id="三、启动私有链节点"><a href="#三、启动私有链节点" class="headerlink" title="三、启动私有链节点"></a>三、启动私有链节点</h3><p>初始化完成后，就有了一条自己的私有链，之后就可以启动自己的私有链节点并做一些操作，在终端中输入以下命令即可启动节点：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ geth --datadir data0 --networkid 1108 console</div></pre></td></tr></table></figure></p>
+<p>上面命令的主体是<code>geth console</code>，表示启动节点并进入交互式控制台，<code>--datadir</code>选项指定使用<code>data0</code>作为数据目录，<code>--networkid</code>选项后面跟一个数字，这里是1108，表示指定这个私有链的网络id为1108。网络id在连接到其他节点的时候会用到，以太坊公网的网络id是1，为了不与公有链网络冲突，运行私有链节点的时候要指定自己的网络id。  </p>
+<p>运行上面的命令后，就启动了区块链节点并进入了Javascript Console：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">...</div><div class="line">Welcome to the Geth JavaScript console!</div><div class="line"></div><div class="line">instance: Geth/v1.5.6-stable/linux/go1.7.3</div><div class="line"> modules: admin:1.0 debug:1.0 eth:1.0 miner:1.0 net:1.0 personal:1.0 rpc:1.0 txpool:1.0 web3:1.0</div><div class="line"></div><div class="line">&gt;</div></pre></td></tr></table></figure></p>
+<p>这是一个交互式的Javascript执行环境，在这里面可以执行Javascript代码，其中<code>&gt;</code>是命令提示符。在这个环境里也内置了一些用来操作以太坊的Javascript对象，可以直接使用这些对象。这些对象主要包括：  </p>
+<ul>
+<li>eth：包含一些跟操作区块链相关的方法</li>
+<li>net：包含以下查看p2p网络状态的方法</li>
+<li>admin：包含一些与管理节点相关的方法</li>
+<li>miner：包含启动&amp;停止挖矿的一些方法</li>
+<li>personal：主要包含一些管理账户的方法</li>
+<li>txpool：包含一些查看交易内存池的方法  </li>
+<li>web3：包含了以上对象，还包含一些单位换算的方法</li>
+</ul>
+<h2 id="探索Javascript-Console"><a href="#探索Javascript-Console" class="headerlink" title="探索Javascript Console"></a>探索Javascript Console</h2><p>进入以太坊Javascript Console后，就可以使用里面的内置对象做一些操作，这些内置对象提供的功能很丰富，比如查看区块和交易、创建账户、挖矿、发送交易、部署智能合约等。 接下来介绍几个常用功能，下面的操作中，前面带<code>&gt;</code>的表示在Javascript Console中执行的命令。  </p>
+<h3 id="一、创建账户"><a href="#一、创建账户" class="headerlink" title="一、创建账户"></a>一、创建账户</h3><p>前面只是搭建了私有链，并没有自己的账户，可以在js console中输入<code>eth.accounts</code>来验证：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt; eth.accounts</div><div class="line">[]</div></pre></td></tr></table></figure></p>
+<p>接下来使用<code>personal</code>对象来创建一个账户：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt; personal.newAccount()</div><div class="line">Passphrase: </div><div class="line">Repeat passphrase: </div><div class="line">&quot;0xc232e2add308136571bb8f9197ba4ae4e5ba9836&quot;</div></pre></td></tr></table></figure></p>
+<p>会提示输入密码和确认密码，输入密码不会有显示，只要输入就可以了，之后就会显示新创建的账户地址。  </p>
+<p>可以创建多个账户，我们再来创建一个账户：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt; personal.newAccount()</div><div class="line">Passphrase: </div><div class="line">Repeat passphrase: </div><div class="line">&quot;0x814d39aa21f3eed069f2b21da7b5f857f7343afa&quot;</div></pre></td></tr></table></figure></p>
+<p>接下来就可以查看到刚才创建的两个账户了：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt; eth.accounts</div><div class="line">[&quot;0xc232e2add308136571bb8f9197ba4ae4e5ba9836&quot;, &quot;0x814d39aa21f3eed069f2b21da7b5f857f7343afa&quot;]</div></pre></td></tr></table></figure></p>
+<p>账户默认会保存在数据目录的keystore文件夹中。查看目录结构，发现data0/keystore中多了两个文件，这两个文件就对应刚才创建的两个账户，这是json格式的文本文件，可以打开查看，里面存的是私钥经过密码加密后的信息。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">data0</div><div class="line">├── geth</div><div class="line">│   ├── chaindata</div><div class="line">│   ├── LOCK</div><div class="line">│   ├── nodekey</div><div class="line">│   └── nodes</div><div class="line">├── geth.ipc</div><div class="line">├── history</div><div class="line">└── keystore</div><div class="line">    ├── UTC--2017-03-22T09-06-47.766993033Z--c232e2add308136571bb8f9197ba4ae4e5ba9836</div><div class="line">    └── UTC--2017-03-22T09-09-42.041015656Z--814d39aa21f3eed069f2b21da7b5f857f7343afa</div></pre></td></tr></table></figure></p>
+<p><strong>小提示</strong>：命令都可以按<code>Tab</code>键自动补全。  </p>
+<h3 id="二、查看账户余额"><a href="#二、查看账户余额" class="headerlink" title="二、查看账户余额"></a>二、查看账户余额</h3><p><code>eth</code>对象提供了查看账户余额的方法：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt; eth.getBalance(eth.accounts[0])</div><div class="line">0</div><div class="line">&gt; eth.getBalance(eth.accounts[1])</div><div class="line">0</div></pre></td></tr></table></figure></p>
+<p>目前两个账户的以太币余额都是0，要使账户有余额，可以从其他账户转账过来，或者通过挖矿来获得以太币奖励。  </p>
+<h3 id="三、启动-amp-停止挖矿"><a href="#三、启动-amp-停止挖矿" class="headerlink" title="三、启动&amp;停止挖矿"></a>三、启动&amp;停止挖矿</h3><p>通过<code>miner.start()</code>来启动挖矿：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt; miner.start(1)</div></pre></td></tr></table></figure></p>
+<p>其中<code>start</code>的参数表示挖矿使用的线程数。第一次启动挖矿会先生成挖矿所需的<code>DAG</code>文件，这个过程有点慢，等进度达到100%后，就会开始挖矿，此时屏幕会被挖矿信息刷屏。  </p>
+<p>如果想停止挖矿，在js console中输入<code>miner.stop()</code>：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt; miner.stop()</div></pre></td></tr></table></figure></p>
+<p><strong>注意</strong>：输入的字符会被挖矿刷屏信息冲掉，没有关系，只要输入完整的<code>miner.stop()</code>之后回车，即可停止挖矿。</p>
+<p>挖到一个区块会奖励5个以太币，挖矿所得的奖励会进入矿工的账户，这个账户叫做<code>coinbase</code>，默认情况下<code>coinbase</code>是本地账户中的第一个账户：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt; eth.coinbase</div><div class="line">&quot;0xc232e2add308136571bb8f9197ba4ae4e5ba9836&quot;</div></pre></td></tr></table></figure></p>
+<p>现在的<code>coinbase</code>是账户0，要想使挖矿奖励进入其他账户，通过<code>miner.setEtherbase()</code>将其他账户设置成<code>coinbase</code>即可：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt; miner.setEtherbase(eth.accounts[1])</div><div class="line">true</div><div class="line">&gt; eth.coinbase</div><div class="line">&quot;0x814d39aa21f3eed069f2b21da7b5f857f7343afa&quot;</div></pre></td></tr></table></figure></p>
+<p>我们还是以账户0作为<code>coinbase</code>，挖到区块以后，账户0里面应该就有余额了：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt; eth.getBalance(eth.accounts[0])</div><div class="line">160000000000000000000</div></pre></td></tr></table></figure></p>
+<p><code>getBalance()</code>返回值的单位是<code>wei</code>，<code>wei</code>是以太币的最小单位，1个以太币=10的18次方个<code>wei</code>。要查看有多少个以太币，可以用<code>web3.fromWei()</code>将返回值换算成以太币：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt; web3.fromWei(eth.getBalance(eth.accounts[0]),&apos;ether&apos;)</div><div class="line">160</div></pre></td></tr></table></figure></p>
+<h3 id="四、发送交易"><a href="#四、发送交易" class="headerlink" title="四、发送交易"></a>四、发送交易</h3><p>目前，账户一的余额还是0：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt; eth.getBalance(eth.accounts[1])</div><div class="line">0</div></pre></td></tr></table></figure></p>
+<p>可以通过发送一笔交易，从账户0转移5个以太币到账户1：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt; amount = web3.toWei(5,&apos;ether&apos;)</div><div class="line">&quot;5000000000000000000&quot;</div><div class="line">&gt; eth.sendTransaction(&#123;from:eth.accounts[0],to:eth.accounts[1],value:amount&#125;)</div><div class="line">Error: account is locked</div><div class="line">    at web3.js:3119:20</div><div class="line">    at web3.js:6023:15</div><div class="line">    at web3.js:4995:36</div><div class="line">    at &lt;anonymous&gt;:1:1</div></pre></td></tr></table></figure></p>
+<p>这里报错了，原因是账户每隔一段时间就会被锁住，要发送交易，必须先解锁账户，由于我们要从账户0发送交易，所以要解锁账户0：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt; personal.unlockAccount(eth.accounts[0])</div><div class="line">Unlock account 0xc232e2add308136571bb8f9197ba4ae4e5ba9836</div><div class="line">Passphrase: </div><div class="line">true</div></pre></td></tr></table></figure></p>
+<p>输入创建账户时设置的密码，就可以成功解锁账户。然后再发送交易：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt; amount = web3.toWei(5,&apos;ether&apos;)</div><div class="line">&quot;5000000000000000000&quot;</div><div class="line">&gt; eth.sendTransaction(&#123;from:eth.accounts[0],to:eth.accounts[1],value:amount&#125;)</div><div class="line">I0322 19:39:36.300675 internal/ethapi/api.go:1047] Tx(0x0c59f431068937cbe9e230483bc79f59bd7146edc8ff5ec37fea6710adcab825) to: 0x814d39aa21f3eed069f2b21da7b5f857f7343afa</div><div class="line">&quot;0x0c59f431068937cbe9e230483bc79f59bd7146edc8ff5ec37fea6710adcab825&quot;</div></pre></td></tr></table></figure></p>
+<p>此时交易已经提交到区块链，返回了交易的hash，但还未被处理，这可以通过查看<code>txpool</code>来验证：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt; txpool.status</div><div class="line">&#123;</div><div class="line">  pending: 1,</div><div class="line">  queued: 0</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>其中有一条<code>pending</code>的交易，<code>pending</code>表示已提交但还未被处理的交易。  </p>
+<p>要使交易被处理，必须要挖矿。这里我们启动挖矿，然后等待挖到一个区块之后就停止挖矿：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt; miner.start(1);admin.sleepBlocks(1);miner.stop();</div></pre></td></tr></table></figure></p>
+<p>当<code>miner.stop()</code>返回<code>true</code>后，<code>txpool</code>中<code>pending</code>的交易数量应该为0了，说明交易已经被处理了：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt; txpool.status</div><div class="line">&#123;</div><div class="line">  pending: 0,</div><div class="line">  queued: 0</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>此时，交易已经生效，账户一应该已经收到了5个以太币了：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt; web3.fromWei(eth.getBalance(eth.accounts[1]),&apos;ether&apos;)</div><div class="line">5</div></pre></td></tr></table></figure></p>
+<h3 id="五、查看交易和区块"><a href="#五、查看交易和区块" class="headerlink" title="五、查看交易和区块"></a>五、查看交易和区块</h3><p><code>eth</code>对象封装了查看交易和区块信息的方法。  </p>
+<p>查看当前区块总数：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt; eth.blockNumber</div><div class="line">33</div></pre></td></tr></table></figure></p>
+<p>通过交易hash查看交易：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt; eth.getTransaction(&quot;0x0c59f431068937cbe9e230483bc79f59bd7146edc8ff5ec37fea6710adcab825&quot;)</div><div class="line">&#123;</div><div class="line">  blockHash: &quot;0xf5d3da50065ce5793c9571a031ad6fe5f1af326a3c4fb7ce16458f4d909c1613&quot;,</div><div class="line">  blockNumber: 33,</div><div class="line">  from: &quot;0xc232e2add308136571bb8f9197ba4ae4e5ba9836&quot;,</div><div class="line">  gas: 90000,</div><div class="line">  gasPrice: 20000000000,</div><div class="line">  hash: &quot;0x0c59f431068937cbe9e230483bc79f59bd7146edc8ff5ec37fea6710adcab825&quot;,</div><div class="line">  input: &quot;0x&quot;,</div><div class="line">  nonce: 0,</div><div class="line">  r: &quot;0x433fe5845391b6da3d8aa0d2b53674e09fb6126f0070a600686809b57e4ef77d&quot;,</div><div class="line">  s: &quot;0x6b0086fb76c46024f849141074a5bc79c49d5f9a658fd0fedbbe354889c34d8d&quot;,</div><div class="line">  to: &quot;0x814d39aa21f3eed069f2b21da7b5f857f7343afa&quot;,</div><div class="line">  transactionIndex: 0,</div><div class="line">  v: &quot;0x1b&quot;,</div><div class="line">  value: 5000000000000000000</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>通过区块号查看区块：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt; eth.getBlock(33)</div><div class="line">&#123;</div><div class="line">  difficulty: 132928,</div><div class="line">  extraData: &quot;0xd783010506846765746887676f312e372e33856c696e7578&quot;,</div><div class="line">  gasLimit: 3244382,</div><div class="line">  gasUsed: 21000,</div><div class="line">  hash: &quot;0xf5d3da50065ce5793c9571a031ad6fe5f1af326a3c4fb7ce16458f4d909c1613&quot;,</div><div class="line">  logsBloom: &quot;0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000&quot;,</div><div class="line">  miner: &quot;0xc232e2add308136571bb8f9197ba4ae4e5ba9836&quot;,</div><div class="line">  mixHash: &quot;0x09849dff7c8b8467812fa80d1fa2a27bc61f1cf16d5b2c05a6ce1b77ee18f3f1&quot;,</div><div class="line">  nonce: &quot;0x5b3939449dbdbea0&quot;,</div><div class="line">  number: 33,</div><div class="line">  parentHash: &quot;0xeca34637642f56f7cfe5b699031c7ddbc43aee00fb10c7f054e0a9719cf226da&quot;,</div><div class="line">  receiptsRoot: &quot;0xd5f5b7ee944e57cbff496f7bdda7ceffd5eedffe6d5be5320008190502adc07a&quot;,</div><div class="line">  sha3Uncles: &quot;0x1dcc4de8dec75d7aab85b567b6ccd41ad312451b948a7413f0a142fd40d49347&quot;,</div><div class="line">  size: 649,</div><div class="line">  stateRoot: &quot;0xc7add6b756980ab9e482766e455597ef1583e747ad62e2924a8e66c6f9170112&quot;,</div><div class="line">  timestamp: 1490183209,</div><div class="line">  totalDifficulty: 4358016,</div><div class="line">  transactions: [&quot;0x0c59f431068937cbe9e230483bc79f59bd7146edc8ff5ec37fea6710adcab825&quot;],</div><div class="line">  transactionsRoot: &quot;0x7335a362b2c3925e7ba1b41bf7772aa9645a13d4f9c12edd5892b87887264232&quot;,</div><div class="line">  uncles: []</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>还有更多的功能请自行探索…。  </p>
+<h3 id="六、连接到其他节点"><a href="#六、连接到其他节点" class="headerlink" title="六、连接到其他节点"></a>六、连接到其他节点</h3><p>可以通过<code>admin.addPeer()</code>方法连接到其他节点，两个节点要想联通，必须保证网络是相通的，并且要指定相同的networkid。  </p>
+<p>假设有两个节点：节点一和节点二，networkid都是1108，通过下面的步骤就可以从节点一连接到节点二。  </p>
+<p>首先要知道节点二的<code>enode</code>信息，在节点二的js console中执行下面的命令查看<code>enode</code>信息：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt; admin.nodeInfo.enode</div><div class="line">&quot;enode://9e86289ea859ca041f235aed87a091d0cd594b377cbe13e1c5f5a08a8a280e62d4019ac54063ed6a1d0e3c3eaedad0b73c40b99a16a176993f0373ffe92be672@[::]:30304&quot;</div></pre></td></tr></table></figure></p>
+<p>然后在节点一的js console中执行<code>admin.addPeer()</code>，就可以连接到节点二：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">&gt; admin.addPeer(&quot;enode://9e86289ea859ca041f235aed87a091d0cd594b377cbe13e1c5f5a08a8a280e62d4019ac54063ed6a1d0e3c3eaedad0b73c40b99a16a176993f0373ffe92be672@127.0.0.1:30304&quot;)</div></pre></td></tr></table></figure></p>
+<p><code>addPeer()</code>的参数就是节点二的<code>enode</code>信息，注意要把<code>enode</code>中的<code>[::]</code>替换成节点二的IP地址。连接成功后，节点二就会开始同步节点一的区块，同步完成后，任意一个节点开始挖矿，另一个节点会自动同步区块，向任意一个节点发送交易，另一个节点也会收到该笔交易。  </p>
+<p>通过<code>admin.peers</code>可以查看连接到的其他节点信息，通过<code>net.peerCount</code>可以查看已连接到的节点数量。  </p>
+<p>除了上面的方法，也可以在启动节点的时候指定<code>--bootnodes</code>选项连接到其他节点。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/uploads/wechatpay.png" alt="zhangdaofeng WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/uploads/alipay.jpg" alt="zhangdaofeng Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/geth/" rel="tag"># geth</a>
+          
+            <a href="/tags/以太坊/" rel="tag"># 以太坊</a>
+          
+            <a href="/tags/私有链/" rel="tag"># 私有链</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/4c678d5d/" rel="next" title="以太坊开发实战：geth客户端安装">
+                <i class="fa fa-chevron-left"></i> 以太坊开发实战：geth客户端安装
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.png"
+               alt="zhangdaofeng" />
+          <p class="site-author-name" itemprop="name">zhangdaofeng</p>
+           
+              <p class="site-description motion-element" itemprop="description">欢迎</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">文章</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.csdn.net/u012254277" target="_blank" title="CSDN">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  CSDN
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/dophin459" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#系统和软件"><span class="nav-number">1.</span> <span class="nav-text">系统和软件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建私有链"><span class="nav-number">2.</span> <span class="nav-text">搭建私有链</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、准备创世区块配置文件"><span class="nav-number">2.1.</span> <span class="nav-text">一、准备创世区块配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、初始化：写入创世区块"><span class="nav-number">2.2.</span> <span class="nav-text">二、初始化：写入创世区块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、启动私有链节点"><span class="nav-number">2.3.</span> <span class="nav-text">三、启动私有链节点</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#探索Javascript-Console"><span class="nav-number">3.</span> <span class="nav-text">探索Javascript Console</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、创建账户"><span class="nav-number">3.1.</span> <span class="nav-text">一、创建账户</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、查看账户余额"><span class="nav-number">3.2.</span> <span class="nav-text">二、查看账户余额</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、启动-amp-停止挖矿"><span class="nav-number">3.3.</span> <span class="nav-text">三、启动&停止挖矿</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、发送交易"><span class="nav-number">3.4.</span> <span class="nav-text">四、发送交易</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、查看交易和区块"><span class="nav-number">3.5.</span> <span class="nav-text">五、查看交易和区块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#六、连接到其他节点"><span class="nav-number">3.6.</span> <span class="nav-text">六、连接到其他节点</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zhangdaofeng</span>
+</div>
+
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("YJ0DFLeODVQ25h1rlCeEiP91-gzGzoHsz", "LBUeHcctt9lvCyjVEPjIMW68");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+</body>
+</html>
