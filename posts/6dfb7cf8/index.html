@@ -89,7 +89,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="以太坊,go-ethereum,geth," />
+  <meta name="keywords" content="Truffle,以太坊,智能合约," />
 
 
 
@@ -105,16 +105,16 @@
 
 
 
-<meta name="description" content="geth是以太坊的官方客户端，它是一个命令行工具，提供很多命令和选项，可以运行以太坊节点、创建和管理账户、发送交易、挖矿、部署智能合约等。">
+<meta name="description" content="Truffle是一个以太坊智能合约开发框架，利用它可以方便地生成项目模板、编译合约、部署合约到区块链、测试合约等等。本篇文章介绍Truffle的安装过程以及基本使用。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="以太坊开发实战：geth客户端安装">
-<meta property="og:url" content="http://dophin459.coding.me/posts/4c678d5d/index.html">
+<meta property="og:title" content="以太坊开发实战：Truffle开发环境配置及使用">
+<meta property="og:url" content="http://dophin459.coding.me/posts/6dfb7cf8/index.html">
 <meta property="og:site_name" content="zhangdf's Blog">
-<meta property="og:description" content="geth是以太坊的官方客户端，它是一个命令行工具，提供很多命令和选项，可以运行以太坊节点、创建和管理账户、发送交易、挖矿、部署智能合约等。">
-<meta property="og:updated_time" content="2017-03-29T07:39:02.889Z">
+<meta property="og:description" content="Truffle是一个以太坊智能合约开发框架，利用它可以方便地生成项目模板、编译合约、部署合约到区块链、测试合约等等。本篇文章介绍Truffle的安装过程以及基本使用。">
+<meta property="og:updated_time" content="2017-03-29T07:31:58.294Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="以太坊开发实战：geth客户端安装">
-<meta name="twitter:description" content="geth是以太坊的官方客户端，它是一个命令行工具，提供很多命令和选项，可以运行以太坊节点、创建和管理账户、发送交易、挖矿、部署智能合约等。">
+<meta name="twitter:title" content="以太坊开发实战：Truffle开发环境配置及使用">
+<meta name="twitter:description" content="Truffle是一个以太坊智能合约开发框架，利用它可以方便地生成项目模板、编译合约、部署合约到区块链、测试合约等等。本篇文章介绍Truffle的安装过程以及基本使用。">
 
 
 
@@ -142,13 +142,13 @@
 
 
 
-  <link rel="canonical" href="http://dophin459.coding.me/posts/4c678d5d/"/>
+  <link rel="canonical" href="http://dophin459.coding.me/posts/6dfb7cf8/"/>
 
 
 
 
 
-  <title> 以太坊开发实战：geth客户端安装 | zhangdf's Blog </title>
+  <title> 以太坊开发实战：Truffle开发环境配置及使用 | zhangdf's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -321,7 +321,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://dophin459.coding.me/posts/4c678d5d/">
+    <link itemprop="mainEntityOfPage" href="http://dophin459.coding.me/posts/6dfb7cf8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhangdaofeng">
@@ -342,7 +342,7 @@
             
             
               
-                以太坊开发实战：geth客户端安装
+                以太坊开发实战：Truffle开发环境配置及使用
               
             
           </h1>
@@ -357,8 +357,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-26T21:58:10+08:00">
-                2017-03-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-27T15:24:44+08:00">
+                2017-03-27
               </time>
             
 
@@ -397,7 +397,7 @@
 
           
           
-             <span id="/posts/4c678d5d/" class="leancloud_visitors" data-flag-title="以太坊开发实战：geth客户端安装">
+             <span id="/posts/6dfb7cf8/" class="leancloud_visitors" data-flag-title="以太坊开发实战：Truffle开发环境配置及使用">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -426,31 +426,44 @@
       
 
       
-        <p>geth是以太坊的官方客户端，它是一个命令行工具，提供很多命令和选项，可以运行以太坊节点、创建和管理账户、发送交易、挖矿、部署智能合约等。</p>
+        <p>Truffle是一个以太坊智能合约开发框架，利用它可以方便地生成项目模板、编译合约、部署合约到区块链、测试合约等等。本篇文章介绍Truffle的安装过程以及基本使用。</p>
 <a id="more"></a>
-<p>下面介绍geth的三种安装方法：</p>
-<ul>
-<li>直接下载可执行文件</li>
-<li>在线安装</li>
-<li>从源码编译安装</li>
-</ul>
-<h1 id="方法一-直接下载可执行文件"><a href="#方法一-直接下载可执行文件" class="headerlink" title="方法一 直接下载可执行文件"></a>方法一 直接下载可执行文件</h1><p>最简单的方法是直接下载可执行文件，以太坊开发团队提供了各个系统的编译好的geth可执行文件，可以去<a href="https://geth.ethereum.org/downloads/" target="_blank" rel="external">官方下载地址</a>或<a href="http://ethfans.org/wikis/Ethereum-Geth-Mirror" target="_blank" rel="external">国内镜像</a>下载适合你系统版本的压缩包，解压缩后直接运行就可以。在命令行中输入 <code>geth help</code> 可查看geth的用法。  </p>
-<p><strong>注意1</strong>：geth是一个命令行工具，需要在命令行中运行geth，windows用户不要直接双击geth.exe。<br><strong>注意2</strong>：如果不加任何参数直接运行 <code>geth</code> ，会自动连接到以太坊公网，此时会开始同步区块，在Linux系统中，区块数据默认存储在<code>~/.ethereum</code>中。  </p>
-<h1 id="方法二-在线安装"><a href="#方法二-在线安装" class="headerlink" title="方法二 在线安装"></a>方法二 在线安装</h1><p>Ubuntu用户可以选择在线安装的方式，在终端中依次执行以下命令即可：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ sudo add-apt-repository -y ppa:ethereum/ethereum</div><div class="line">$ sudo apt-get update</div><div class="line">$ sudo apt-get install ethereum</div></pre></td></tr></table></figure></p>
-<p>安装完成后执行 <code>geth help</code> 查看geth的用法。  </p>
-<h1 id="方法三-从源码编译安装"><a href="#方法三-从源码编译安装" class="headerlink" title="方法三 从源码编译安装"></a>方法三 从源码编译安装</h1><p>编译安装推荐使用Linux系统，本文以64位的Ubuntu14.04系统为例。<br>geth是用go语言写的，编译geth源码需要go语言和C语言编译器，因此需要先<a href="http://dophin459.coding.me/posts/1c3f4ffd/">安装go语言</a>，go语言版本推荐用go1.7及以上。</p>
-<h2 id="使用make编译"><a href="#使用make编译" class="headerlink" title="使用make编译"></a>使用make编译</h2><p>首先下载geth源码 <a href="https://github.com/ethereum/go-ethereum/releases" title="go-ethereum" target="_blank" rel="external">go-ethereum</a>，这里以 <code>go-ethereum-1.5.6.tar.gz</code> 为例：  </p>
-<p>接下来解压缩源码：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ tar -xzf go-ethereum-1.5.6.tar.gz</div></pre></td></tr></table></figure></p>
-<p>用make工具进行编译：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> go-ethereum-1.5.6</div><div class="line">$ make geth</div></pre></td></tr></table></figure></p>
-<p>make会执行build目录下的编译脚本，编译脚本会调用go语言编译器进行编译。等待十几秒，编译就完成了，此时会在 <code>go-ethereum-1.5.6/build/bin</code> 中生成geth可执行文件。  </p>
-<p>输入 <code>geth help</code> 命令，会显示geth所有的命令和选项：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> build/bin</div><div class="line">$ ./geth <span class="built_in">help</span></div></pre></td></tr></table></figure></p>
-<h2 id="使用go语言编译工具编译"><a href="#使用go语言编译工具编译" class="headerlink" title="使用go语言编译工具编译"></a>使用go语言编译工具编译</h2><p>如果熟悉go语言，可以直接使用go语言的编译工具编译。  </p>
-<p>首先下载go-ethereum项目源码：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ go get <span class="_">-d</span> github.com/ethereum/go-ethereum</div></pre></td></tr></table></figure></p>
-<p>上面的命令会下载go-ethereum源码到<code>GOPATH/src/github.com/ethereum/go-ethereum</code>，同时会下载相关的依赖包，在国内网络环境下，如果不翻墙，下载通常会失败，此时可以参考下面的<strong>手动下载</strong>方法。  </p>
-<p>下载完成后，通过以下命令编译：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ go install -v github.com/ethereum/go-ethereum/cmd/geth</div></pre></td></tr></table></figure></p>
-<p>等待十几秒，编译完成后，会在<code>GOPATH/bin</code>目录下生成geth可执行文件。  </p>
-<p><strong>注</strong>：如果<code>go get</code>命令下载很慢或失败，可以采用<strong>手动下载</strong>：首先下载 <code>go-ethereum-1.5.6.tar.gz</code> ，然后解压到<code>GOPATH/src/github.com/ethereum/go-ethereum</code>，还要到<a href="http://www.golangtc.com/download/package" target="_blank" rel="external">http://www.golangtc.com/download/package</a>下载<code>golang.org.x.net.tar.gz</code>，并将其解压到<code>GOPATH/src</code>中。解压之后的目录结构应该是这样的：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">GOPATH/src</div><div class="line">├── github.com</div><div class="line">│   └── ethereum</div><div class="line">│       └── go-ethereum</div><div class="line">└── golang.org</div><div class="line">    └── x</div><div class="line">        └── net</div></pre></td></tr></table></figure></p>
-<p>之后再通过上面的<code>go install</code>命令编译安装即可。</p>
+<h1 id="Truffle安装"><a href="#Truffle安装" class="headerlink" title="Truffle安装"></a>Truffle安装</h1><p><strong>系统环境</strong>：Ubuntu16.04 64位</p>
+<h2 id="一、安装-Nodejs"><a href="#一、安装-Nodejs" class="headerlink" title="一、安装 Nodejs"></a>一、安装 Nodejs</h2><p>Truffle是一个nodejs模块，因此要先安装nodejs。<br>进入nodejs网站，选择Linux Binaries 64bit下载最新版本的nodejs压缩包，这里以 <code>node-v6.10.0-linux-x64.tar.gz</code> 为例。  </p>
+<p>将下载的压缩包解压到某个目录下，比如 <code>~/tools</code> 下：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ tar -C ~/tools -xzf node-v6.10.0-linux-x64.tar.gz</div></pre></td></tr></table></figure></p>
+<p>在系统目录下创建到node及npm可执行文件的软链接：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ sudo ln <span class="_">-s</span> ~/tools/node-v6.10.0-linux-x64/bin/node /usr/<span class="built_in">local</span>/bin/node</div><div class="line">$ sudo ln <span class="_">-s</span> ~/tools/node-v6.10.0-linux-x64/bin/npm /usr/<span class="built_in">local</span>/bin/npm</div></pre></td></tr></table></figure></p>
+<p>执行 <code>node -v</code> 以及 <code>npm -v</code> ，如果输出nodejs和npm的版本号，说明安装成功了。  </p>
+<h2 id="二、配置npm源（可选）"><a href="#二、配置npm源（可选）" class="headerlink" title="二、配置npm源（可选）"></a>二、配置npm源（可选）</h2><p>npm=node package manager，是nodejs的包管理器，nodejs模块都是通过npm来在线安装，很多安装包来自国外，由于网络管制原因，会导致一些包下载很慢甚至安装失败，因此建议把npm的源设置为国内源，用以下命令可以把npm源设置为淘宝镜像源：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ npm config <span class="built_in">set</span> registry http://registry.npm.taobao.org</div></pre></td></tr></table></figure></p>
+<h2 id="三、安装-git"><a href="#三、安装-git" class="headerlink" title="三、安装 git"></a>三、安装 git</h2><p>为保证truffle的正常安装，执行以下命令安装git：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ sudo apt-get install git</div></pre></td></tr></table></figure></p>
+<h2 id="四、安装truffle"><a href="#四、安装truffle" class="headerlink" title="四、安装truffle"></a>四、安装truffle</h2><p>通过npm安装，安装最新版：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ sudo npm install -g truffle</div></pre></td></tr></table></figure></p>
+<p>或安装指定版本：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ sudo npm install -g truffle@~2.1.1</div></pre></td></tr></table></figure></p>
+<p>其中<code>@~2.1.1</code>表示安装2.1.1&lt;=version&lt;2.2.0的最新版。  </p>
+<p>安装完成后在终端输入<code>truffle</code>，发现找不到命令，原因是truffle被安装到了~/tools/node-v6.10.0-linux-x64/bin中，而不是系统目录。为了让终端能识别truffle命令，需要创建一个软链接：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ sudo ln <span class="_">-s</span> ~/tools/node-v6.10.0-linux-x64/bin/truffle /usr/<span class="built_in">local</span>/bin/truffle</div></pre></td></tr></table></figure></p>
+<p>或者将~/tools/node-v6.10.0-linux-x64/bin加入到PATH环境变量中，在~/.bashrc文件最后加入一行：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$HOME</span>/tools/node-v6.10.0-linux-x64/bin</div></pre></td></tr></table></figure></p>
+<p>之后再输入<code>truffle</code>，就会显示truffle版本和用法，本例安装的是2.1.2版。</p>
+<h1 id="Truffle使用"><a href="#Truffle使用" class="headerlink" title="Truffle使用"></a>Truffle使用</h1><h2 id="一、创建项目"><a href="#一、创建项目" class="headerlink" title="一、创建项目"></a>一、创建项目</h2><p>新建一个目录并进入该目录，然后创建项目：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ mkdir myContract &amp;&amp; <span class="built_in">cd</span> myContract</div><div class="line">$ truffle init</div></pre></td></tr></table></figure></p>
+<p>执行<code>truffle init</code>后，会在当前目录生成一个项目模板，生成的项目目录结构如下：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">myContract</div><div class="line">├── app</div><div class="line">│   ├── images</div><div class="line">│   ├── index.html</div><div class="line">│   ├── javascripts</div><div class="line">│   │   └── app.js</div><div class="line">│   └── stylesheets</div><div class="line">│       └── app.css</div><div class="line">├── contracts</div><div class="line">│   ├── ConvertLib.sol</div><div class="line">│   ├── MetaCoin.sol</div><div class="line">│   └── Migrations.sol</div><div class="line">├── migrations</div><div class="line">│   ├── 1_initial_migration.js</div><div class="line">│   └── 2_deploy_contracts.js</div><div class="line">├── <span class="built_in">test</span></div><div class="line">│   └── metacoin.js</div><div class="line">└── truffle.js</div></pre></td></tr></table></figure></p>
+<p>其中app是生成的示例web应用代码，contracts下面存放合约代码，migrations里面是部署合约的脚本，test下面是测试脚本，truffle.js是项目的配置文件。  </p>
+<p><strong>注</strong>：这是truffle 2.1.2生成的项目模板，目前truffle最新版3.1.2生成的项目模板中不再包含app目录。  </p>
+<h2 id="二、编写合约"><a href="#二、编写合约" class="headerlink" title="二、编写合约"></a>二、编写合约</h2><p>编写合约代码，并把代码文件保存在contracts目录下，默认已经生成了一个示例合约MetaCoin.sol和ConvertLib.sol，如果不需要可以将它们删除，本例就使用默认的示例合约文件。  </p>
+<h2 id="三、编译合约"><a href="#三、编译合约" class="headerlink" title="三、编译合约"></a>三、编译合约</h2><p>在终端中输入：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ truffle compile</div></pre></td></tr></table></figure></p>
+<p>如果出现类似如下输出，则编译成功：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Compiling ConvertLib.sol...</div><div class="line">Compiling MetaCoin.sol...</div><div class="line">Compiling Migrations.sol...</div><div class="line">Writing artifacts to ./build/contracts</div></pre></td></tr></table></figure></p>
+<h2 id="四、部署合约"><a href="#四、部署合约" class="headerlink" title="四、部署合约"></a>四、部署合约</h2><p>首先启动一个私有链节点，在终端中输入下面命令，进入geth控制台：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ geth --datadir chain0/data --networkid 1108 --rpc console</div></pre></td></tr></table></figure></p>
+<p>然后修改truffle.js文件，将其中rpc下面的host值改为节点的IP地址，port的值改为geth启动参数中的–rpcport参数值。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">// truffle.js</span></div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="attr">build</span>: &#123;</div><div class="line">    <span class="string">"index.html"</span>: <span class="string">"index.html"</span>,</div><div class="line">    <span class="string">"app.js"</span>: [</div><div class="line">      <span class="string">"javascripts/app.js"</span></div><div class="line">    ],</div><div class="line">    <span class="string">"app.css"</span>: [</div><div class="line">      <span class="string">"stylesheets/app.css"</span></div><div class="line">    ],</div><div class="line">    <span class="string">"images/"</span>: <span class="string">"images/"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">rpc</span>: &#123;</div><div class="line">    <span class="attr">host</span>: <span class="string">"localhost"</span>,</div><div class="line">    <span class="attr">port</span>: <span class="number">8545</span></div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>还要修改migrations/2_deploy_contracts.js，将deployer.deploy的参数中的合约名改为自己要部署的合约名：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">// migrations/2_deploy_contracts.js</span></div><div class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">deployer</span>) </span>&#123;</div><div class="line">  deployer.deploy(ConvertLib);</div><div class="line">  deployer.autolink();</div><div class="line">  deployer.deploy(MetaCoin);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>接下来在geth控制台中输入以下命令，解锁账户然后让节点开始挖矿：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">&gt; personal.unlockAccount(eth.accounts[<span class="number">0</span>])</div><div class="line">&gt; miner.start(<span class="number">1</span>)</div></pre></td></tr></table></figure></p>
+<p>最后部署合约到区块链，在终端中执行：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ truffle migrate --reset</div></pre></td></tr></table></figure></p>
+<p>如果出现类似如下输出，则部署成功：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">... (省略)</div><div class="line">Running migration: 2_deploy_contracts.js</div><div class="line">  Deploying ConvertLib...</div><div class="line">  ConvertLib: 0x4d7032160ef9b300fb0cc83cad97819f89e6fc38</div><div class="line">  Linking ConvertLib to MetaCoin</div><div class="line">  Deploying MetaCoin...</div><div class="line">  MetaCoin: 0x3e16298422c552ac794c8a83f4fdae62c6bc2a20</div><div class="line">Saving successful migration to network...</div><div class="line">Saving artifacts...</div></pre></td></tr></table></figure></p>
+<h2 id="五、测试合约"><a href="#五、测试合约" class="headerlink" title="五、测试合约"></a>五、测试合约</h2><h3 id="进入truffle控制台调试合约"><a href="#进入truffle控制台调试合约" class="headerlink" title="进入truffle控制台调试合约"></a>进入truffle控制台调试合约</h3><p>合约部署成功后，在终端执行<code>truffle console</code>，可以进入Javascript控制台对合约进行调试：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ truffle console</div><div class="line">truffle(default)&gt;</div></pre></td></tr></table></figure></p>
+<p>在Javascript控制台通过<code>ContractName.deployed()</code>或<code>ContractName.at(contractAddress)</code>获取已部署的合约对象，之后就可以通过该对象调用合约的方法进行调试：  </p>
+<p>获取已部署的合约对象：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">truffle(<span class="keyword">default</span>)&gt; <span class="keyword">var</span> metacoin = MetaCoin.deployed()</div></pre></td></tr></table></figure></p>
+<p>首先查看第一个账户的MetaCoin余额：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">truffle(<span class="keyword">default</span>)&gt; metacoin.getBalance.call(web3.eth.accounts[<span class="number">0</span>])</div></pre></td></tr></table></figure></p>
+<p>应该返回10000，因为在MetaCoin的构造函数中将合约创建者的初始值设为了10000。  </p>
+<p>接下来从第一个账户往第二个账户转30个MetaCoin：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">truffle(<span class="keyword">default</span>)&gt; metacoin.sendCoin.sendTransaction(web3.eth.accounts[<span class="number">1</span>],<span class="number">30</span>,&#123;<span class="attr">from</span>:web3.eth.accounts[<span class="number">0</span>]&#125;)</div></pre></td></tr></table></figure></p>
+<p>上面调用sendCoin会向区块链发送一笔交易，需要节点挖矿使交易生效。 </p>
+<p>转账成功后再查看两个账户的余额是否发生了变化：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">truffle(<span class="keyword">default</span>)&gt; metacoin.getBalance.call(web3.eth.accounts[<span class="number">0</span>])</div><div class="line">truffle(<span class="keyword">default</span>)&gt; metacoin.getBalance.call(web3.eth.accounts[<span class="number">1</span>])</div></pre></td></tr></table></figure></p>
+<p>执行完后发现accounts[0]的余额变成了9970，accounts[1]的余额变成了30，说明转账成功了。输入<code>.exit</code>可以退出truffle控制台。 </p>
+<h3 id="运行单元测试"><a href="#运行单元测试" class="headerlink" title="运行单元测试"></a>运行单元测试</h3><p>Truffle集成了nodejs测试框架Chai<a href="https://github.com/chaijs/chai" target="_blank" rel="external">(https://github.com/chaijs/chai)</a>，我们可以使用nodejs内置的断言模块assert对合约进行测试。在test/目录下编写合约的测试脚本，然后通过 <code>truffle test</code> 命令执行脚本：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ truffle <span class="built_in">test</span></div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -501,11 +514,11 @@
       
         <div class="post-tags">
           
+            <a href="/tags/Truffle/" rel="tag"># Truffle</a>
+          
             <a href="/tags/以太坊/" rel="tag"># 以太坊</a>
           
-            <a href="/tags/go-ethereum/" rel="tag"># go-ethereum</a>
-          
-            <a href="/tags/geth/" rel="tag"># geth</a>
+            <a href="/tags/智能合约/" rel="tag"># 智能合约</a>
           
         </div>
       
@@ -518,8 +531,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/posts/1c3f4ffd/" rel="next" title="Go语言安装教程">
-                <i class="fa fa-chevron-left"></i> Go语言安装教程
+              <a href="/posts/e47700bb/" rel="next" title="以太坊开发实战：私有链搭建操作指南">
+                <i class="fa fa-chevron-left"></i> 以太坊开发实战：私有链搭建操作指南
               </a>
             
           </div>
@@ -527,10 +540,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/posts/e47700bb/" rel="prev" title="以太坊开发实战：私有链搭建操作指南">
-                以太坊开发实战：私有链搭建操作指南 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -679,7 +688,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#方法一-直接下载可执行文件"><span class="nav-number">1.</span> <span class="nav-text">方法一 直接下载可执行文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#方法二-在线安装"><span class="nav-number">2.</span> <span class="nav-text">方法二 在线安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#方法三-从源码编译安装"><span class="nav-number">3.</span> <span class="nav-text">方法三 从源码编译安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用make编译"><span class="nav-number">3.1.</span> <span class="nav-text">使用make编译</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用go语言编译工具编译"><span class="nav-number">3.2.</span> <span class="nav-text">使用go语言编译工具编译</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Truffle安装"><span class="nav-number">1.</span> <span class="nav-text">Truffle安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、安装-Nodejs"><span class="nav-number">1.1.</span> <span class="nav-text">一、安装 Nodejs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、配置npm源（可选）"><span class="nav-number">1.2.</span> <span class="nav-text">二、配置npm源（可选）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、安装-git"><span class="nav-number">1.3.</span> <span class="nav-text">三、安装 git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、安装truffle"><span class="nav-number">1.4.</span> <span class="nav-text">四、安装truffle</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Truffle使用"><span class="nav-number">2.</span> <span class="nav-text">Truffle使用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、创建项目"><span class="nav-number">2.1.</span> <span class="nav-text">一、创建项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、编写合约"><span class="nav-number">2.2.</span> <span class="nav-text">二、编写合约</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、编译合约"><span class="nav-number">2.3.</span> <span class="nav-text">三、编译合约</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、部署合约"><span class="nav-number">2.4.</span> <span class="nav-text">四、部署合约</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、测试合约"><span class="nav-number">2.5.</span> <span class="nav-text">五、测试合约</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#进入truffle控制台调试合约"><span class="nav-number">2.5.1.</span> <span class="nav-text">进入truffle控制台调试合约</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行单元测试"><span class="nav-number">2.5.2.</span> <span class="nav-text">运行单元测试</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>

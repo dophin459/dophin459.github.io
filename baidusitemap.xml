@@ -5,15 +5,15 @@
     
   <url>
     <loc>http://dophin459.coding.me/posts/e47700bb/</loc>
-    <lastmod>2017-03-29T02:38:17.473Z</lastmod>
+    <lastmod>2017-03-29T07:43:01.375Z</lastmod>
     <data>
         <display>
         <title>以太坊开发实战：私有链搭建操作指南</title>
         <pubTime>2017-03-27T02:24:59.000Z</pubTime>
         
-        <tag>geth</tag>
-         
         <tag>以太坊</tag>
+         
+        <tag>geth</tag>
          
         <tag>私有链</tag>
          
@@ -29,17 +29,65 @@
     
   <url>
     <loc>http://dophin459.coding.me/posts/4c678d5d/</loc>
-    <lastmod>2017-03-29T02:37:19.887Z</lastmod>
+    <lastmod>2017-03-29T07:39:02.889Z</lastmod>
     <data>
         <display>
         <title>以太坊开发实战：geth客户端安装</title>
         <pubTime>2017-03-26T13:58:10.000Z</pubTime>
         
+        <tag>以太坊</tag>
+         
         <tag>go-ethereum</tag>
          
         <tag>geth</tag>
          
+         
+           
+             
+              <breadCrumb title="以太坊开发" url="http://dophin459.coding.me/categories/%E4%BB%A5%E5%A4%AA%E5%9D%8A%E5%BC%80%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://dophin459.coding.me/posts/1c3f4ffd/</loc>
+    <lastmod>2017-03-29T07:37:54.953Z</lastmod>
+    <data>
+        <display>
+        <title>Go语言安装教程</title>
+        <pubTime>2017-03-26T13:21:15.000Z</pubTime>
+        
+        <tag>golang</tag>
+         
+        <tag>go语言</tag>
+         
+        <tag>编程语言</tag>
+         
+         
+           
+             
+              <breadCrumb title="编程语言" url="http://dophin459.coding.me/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://dophin459.coding.me/posts/6dfb7cf8/</loc>
+    <lastmod>2017-03-29T07:31:58.294Z</lastmod>
+    <data>
+        <display>
+        <title>以太坊开发实战：Truffle开发环境配置及使用</title>
+        <pubTime>2017-03-27T07:24:44.000Z</pubTime>
+        
+        <tag>Truffle</tag>
+         
         <tag>以太坊</tag>
+         
+        <tag>智能合约</tag>
          
          
            
@@ -61,30 +109,6 @@
         
          
            
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://dophin459.coding.me/posts/1c3f4ffd/</loc>
-    <lastmod>2017-03-29T02:09:46.455Z</lastmod>
-    <data>
-        <display>
-        <title>Go语言安装教程</title>
-        <pubTime>2017-03-26T13:21:15.000Z</pubTime>
-        
-        <tag>golang</tag>
-         
-        <tag>go语言</tag>
-         
-        <tag>编程语言</tag>
-         
-         
-           
-             
-              <breadCrumb title="编程语言" url="http://dophin459.coding.me/categories/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
-          
         </display>
     </data>
     </url>
