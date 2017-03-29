@@ -111,7 +111,7 @@
 <meta property="og:url" content="http://dophin459.coding.me/posts/e47700bb/index.html">
 <meta property="og:site_name" content="zhangdf's Blog">
 <meta property="og:description" content="虽然以太坊是一个公有链系统，但是我们可以通过设置一些参数来运行自己的私有链节点，在自己的私有链上进行开发和测试不需要同步公有链数据，也不需要花钱来买以太币，节省存储空间和成本，而且很灵活很方便。本文介绍使用geth客户端搭建私有链的操作步骤，同时会解释在这个过程中用到的各个命令及选项的含义和作用，最后会介绍geth的Javascript Console中的一些常用功能。">
-<meta property="og:updated_time" content="2017-03-29T02:30:32.101Z">
+<meta property="og:updated_time" content="2017-03-29T02:38:17.473Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="以太坊开发实战：私有链搭建操作指南">
 <meta name="twitter:description" content="虽然以太坊是一个公有链系统，但是我们可以通过设置一些参数来运行自己的私有链节点，在自己的私有链上进行开发和测试不需要同步公有链数据，也不需要花钱来买以太币，节省存储空间和成本，而且很灵活很方便。本文介绍使用geth客户端搭建私有链的操作步骤，同时会解释在这个过程中用到的各个命令及选项的含义和作用，最后会介绍geth的Javascript Console中的一些常用功能。">
@@ -430,7 +430,7 @@
 <a id="more"></a>
 <h2 id="系统和软件"><a href="#系统和软件" class="headerlink" title="系统和软件"></a>系统和软件</h2><ul>
 <li>Ubuntu 16.04 64位</li>
-<li>geth 1.5.6 <a href="https://my.oschina.net/u/2349981/blog/856956" target="_blank" rel="external">=&gt;(安装教程)</a></li>
+<li>geth 1.5.6 <a href="http://dophin459.coding.me/posts/4c678d5d/">=&gt;(安装教程)</a></li>
 </ul>
 <h2 id="搭建私有链"><a href="#搭建私有链" class="headerlink" title="搭建私有链"></a>搭建私有链</h2><h3 id="一、准备创世区块配置文件"><a href="#一、准备创世区块配置文件" class="headerlink" title="一、准备创世区块配置文件"></a>一、准备创世区块配置文件</h3><p>以太坊支持自定义创世区块，要运行私有链，我们就需要定义自己的创世区块，创世区块信息写在一个json格式的配置文件中。首先将下面的内容保存到一个json文件中，例如genesis.json。<br><figure class="highlight json"><table><tr><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"coinbase"</span>   : <span class="string">"0x0000000000000000000000000000000000000000"</span>,</div><div class="line">  <span class="attr">"difficulty"</span> : <span class="string">"0x400"</span>,</div><div class="line">  <span class="attr">"extraData"</span>  : <span class="string">"0x0"</span>,</div><div class="line">  <span class="attr">"gasLimit"</span>   : <span class="string">"0x2fefd8"</span>,</div><div class="line">  <span class="attr">"nonce"</span>      : <span class="string">"0xdeadbeefdeadbeef"</span>,</div><div class="line">  <span class="attr">"mixhash"</span>    : <span class="string">"0x0000000000000000000000000000000000000000000000000000000000000000"</span>,</div><div class="line">  <span class="attr">"parentHash"</span> : <span class="string">"0x0000000000000000000000000000000000000000000000000000000000000000"</span>,</div><div class="line">  <span class="attr">"timestamp"</span>  : <span class="string">"0x00"</span>,</div><div class="line">  <span class="attr">"alloc"</span>      : &#123;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <h3 id="二、初始化：写入创世区块"><a href="#二、初始化：写入创世区块" class="headerlink" title="二、初始化：写入创世区块"></a>二、初始化：写入创世区块</h3><p>准备好创世区块配置文件后，需要初始化区块链，将上面的创世区块信息写入到区块链中。首先要新建一个目录用来存放区块链数据，假设新建的数据目录为~/privatechain/data0，genesis.json保存在~/privatechain中，此时目录结构应该是这样的：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">privatechain</div><div class="line">├── data0</div><div class="line">└── genesis.json</div></pre></td></tr></table></figure></p>

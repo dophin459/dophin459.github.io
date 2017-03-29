@@ -111,7 +111,7 @@
 <meta property="og:url" content="http://dophin459.coding.me/posts/4c678d5d/index.html">
 <meta property="og:site_name" content="zhangdf's Blog">
 <meta property="og:description" content="geth是以太坊的官方客户端，它是一个命令行工具，提供很多命令和选项，可以运行以太坊节点、创建和管理账户、发送交易、挖矿、部署智能合约等。">
-<meta property="og:updated_time" content="2017-03-29T02:14:02.837Z">
+<meta property="og:updated_time" content="2017-03-29T02:37:19.887Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="以太坊开发实战：geth客户端安装">
 <meta name="twitter:description" content="geth是以太坊的官方客户端，它是一个命令行工具，提供很多命令和选项，可以运行以太坊节点、创建和管理账户、发送交易、挖矿、部署智能合约等。">
@@ -438,7 +438,7 @@
 <p><strong>注意1</strong>：geth是一个命令行工具，需要在命令行中运行geth，windows用户不要直接双击geth.exe。<br><strong>注意2</strong>：如果不加任何参数直接运行 <code>geth</code> ，会自动连接到以太坊公网，此时会开始同步区块，在Linux系统中，区块数据默认存储在<code>~/.ethereum</code>中。  </p>
 <h2 id="方法二-在线安装"><a href="#方法二-在线安装" class="headerlink" title="方法二 在线安装"></a>方法二 在线安装</h2><p>Ubuntu用户可以选择在线安装的方式，在终端中依次执行以下命令即可：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ sudo add-apt-repository -y ppa:ethereum/ethereum</div><div class="line">$ sudo apt-get update</div><div class="line">$ sudo apt-get install ethereum</div></pre></td></tr></table></figure></p>
 <p>安装完成后执行 <code>geth help</code> 查看geth的用法。  </p>
-<h2 id="方法三-从源码编译安装"><a href="#方法三-从源码编译安装" class="headerlink" title="方法三 从源码编译安装"></a>方法三 从源码编译安装</h2><p>编译安装推荐使用Linux系统，本文以64位的Ubuntu14.04系统为例。<br>geth是用go语言写的，编译geth源码需要go语言和C语言编译器，因此需要先<a href="https://my.oschina.net/u/2349981/blog/856949" target="_blank" rel="external">安装go语言</a>，go语言版本推荐用go1.7及以上。</p>
+<h2 id="方法三-从源码编译安装"><a href="#方法三-从源码编译安装" class="headerlink" title="方法三 从源码编译安装"></a>方法三 从源码编译安装</h2><p>编译安装推荐使用Linux系统，本文以64位的Ubuntu14.04系统为例。<br>geth是用go语言写的，编译geth源码需要go语言和C语言编译器，因此需要先<a href="http://dophin459.coding.me/posts/1c3f4ffd/">安装go语言</a>，go语言版本推荐用go1.7及以上。</p>
 <h3 id="使用make编译"><a href="#使用make编译" class="headerlink" title="使用make编译"></a>使用make编译</h3><p>首先下载geth源码 <a href="https://github.com/ethereum/go-ethereum/releases" title="go-ethereum" target="_blank" rel="external">go-ethereum</a>，这里以 <code>go-ethereum-1.5.6.tar.gz</code> 为例：  </p>
 <p>接下来解压缩源码：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ tar -xzf go-ethereum-1.5.6.tar.gz</div></pre></td></tr></table></figure></p>
 <p>用make工具进行编译：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> go-ethereum-1.5.6</div><div class="line">$ make geth</div></pre></td></tr></table></figure></p>
