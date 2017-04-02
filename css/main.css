@@ -1799,7 +1799,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #667e55;
+  background: #b675ff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3005,6 +3005,16 @@ code {
 }
 .page-home .main-inner {
   width: 840px;
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .page-home .main-inner {
+    width: auto;
+  }
+}
+@media (max-width: 767px) {
+  .page-home .main-inner {
+    width: auto;
+  }
 }
 .post-button {
   margin-top: 40px;
