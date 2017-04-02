@@ -1799,7 +1799,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #05cdff;
+  background: #ff2a91;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2929,12 +2929,12 @@ code {
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .page-home .post {
-    padding: 30px 20px 40px 20px;
+    padding: 30px 25px 40px 25px;
   }
 }
 @media (max-width: 767px) {
   .page-home .post {
-    padding: 30px 20px 40px 20px;
+    padding: 30px 25px 40px 25px;
   }
 }
 .headband {
