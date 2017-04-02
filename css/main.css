@@ -487,8 +487,8 @@ code {
 code {
   padding: 2px 4px;
   word-wrap: break-word;
-  color: #333;
-  background: #f5f5f5;
+  color: #555;
+  background: #eee;
   border-radius: 3px;
   font-size: 13px;
 }
@@ -1799,7 +1799,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff01ff;
+  background: #667e55;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2912,6 +2912,21 @@ h5,
 h6 {
   font-weight: 400;
 }
+code {
+  color: #333;
+  background: #fff;
+  border: 1px solid #eee;
+}
+.highlight {
+  color: #333;
+  border: 1px solid #eee;
+  margin: 15px 0;
+}
+.page-home .post {
+  padding: 30px 40px 40px 40px;
+  margin-top: 80px;
+  box-shadow: 0 0 14px rgba(202,203,203,0.5);
+}
 .headband {
   display: none;
 }
@@ -2967,6 +2982,7 @@ h6 {
   width: 100%;
   height: 100%;
   padding: 10px 0 10px 0;
+  background: transparent;
 }
 .menu {
   float: none;
@@ -2986,4 +3002,24 @@ h6 {
 .menu .menu-item-active a {
   color: #fff;
   border-bottom-color: #fff;
+}
+.page-home .main-inner {
+  width: 840px;
+}
+.post-button {
+  margin-top: 40px;
+  text-align: center;
+}
+.post-button .btn {
+  color: #fff;
+  background: #333;
+  font-size: 16px;
+  padding: 2px 30px;
+  border-radius: 2px;
+  border: 2px solid #333;
+  transition-property: background;
+}
+.post-button .btn:hover {
+  color: #222;
+  background: #fff;
 }
