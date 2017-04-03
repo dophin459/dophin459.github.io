@@ -57,11 +57,11 @@
         <title>以太坊开发实战：Truffle开发环境配置及使用</title>
         <pubTime>2017-03-27T07:24:44.000Z</pubTime>
         
+        <tag>truffle</tag>
+         
         <tag>以太坊</tag>
          
         <tag>智能合约</tag>
-         
-        <tag>truffle</tag>
          
          
            
@@ -81,9 +81,9 @@
         <title>以太坊开发实战：私有链搭建操作指南</title>
         <pubTime>2017-03-27T02:24:59.000Z</pubTime>
         
-        <tag>geth</tag>
-         
         <tag>以太坊</tag>
+         
+        <tag>geth</tag>
          
         <tag>私有链</tag>
          
@@ -105,11 +105,11 @@
         <title>以太坊开发实战：geth客户端安装</title>
         <pubTime>2017-03-26T13:58:10.000Z</pubTime>
         
+        <tag>以太坊</tag>
+         
         <tag>go-ethereum</tag>
          
         <tag>geth</tag>
-         
-        <tag>以太坊</tag>
          
          
            
