@@ -1801,7 +1801,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #861ab5;
+  background: #b821a3;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2974,6 +2974,15 @@ p {
 .page-post-detail .posts-expand .post-body ul li {
   list-style: disc;
 }
+.page-post-detail .posts-expand .post-body h1,
+.page-post-detail .posts-expand .post-body h2,
+.page-post-detail .posts-expand .post-body h3,
+.page-post-detail .posts-expand .post-body h4,
+.page-post-detail .posts-expand .post-body h5,
+.page-post-detail .posts-expand .post-body h6 {
+  font-weight: 500;
+  margin: 20px 0 10px;
+}
 #rewardButton {
   margin: 10px;
 }
@@ -2983,14 +2992,6 @@ p {
   height: 70px;
   line-height: 70px;
   font-size: 32px;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: 400;
 }
 code {
   color: #333;
@@ -3039,13 +3040,12 @@ code {
   -o-transform: rotate(360deg) scale(1.1);
   transform: rotate(360deg) scale(1.1);
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 20px 0 10px;
+.posts-expand .post-title {
+  font-weight: 500;
+  text-shadow: rgba(50,50,50,0.3) 1px 1px 2px;
+}
+.page-home .posts-expand .post-title {
+  font-weight: 600px;
 }
 .site-meta {
   background: none;
