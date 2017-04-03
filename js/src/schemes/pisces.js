@@ -2,7 +2,8 @@ $(document).ready(function () {
   var $headerInner = $('.header-inner');
   var $sidebar = $('#sidebar');
   var getSidebarTop = function(){
-    return $headerInner.height() + CONFIG.sidebar.offset;
+    //return $headerInner.height() + CONFIG.sidebar.offset;
+    return 0;
   };
   var setSidebarMarginTop = function(sidebarTop){
     return $sidebar.css({ 'margin-top': sidebarTop });
