@@ -1801,7 +1801,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #b16590;
+  background: #861ab5;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3019,9 +3019,9 @@ code {
   margin: 0 auto;
   max-width: 96px;
   height: auto;
-  border: 1px solid transparent;
-  padding: 1px;
-  background-color: #55dae1;
+  border: 1px solid #eee;
+  padding: 2px;
+  background-color: #eee;
   border-radius: 50%;
   webkit-transition: 1.4s all;
   moz-transition: 1.4s all;
@@ -3098,6 +3098,8 @@ h6 {
   width: 75%;
   border-left: 1px solid #eee;
   box-shadow: none;
+  padding-left: 50px;
+  padding-right: 50px;
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .content-wrap {
@@ -3167,4 +3169,17 @@ h6 {
 }
 .posts-expand .post-eof {
   width: 100%;
+  background: #eee;
+}
+.post-button .btn {
+  color: #fff;
+  background: #333;
+  font-size: 16px;
+  border-radius: 2px;
+  border: 2px solid #333;
+  transition-property: background;
+}
+.post-button .btn:hover {
+  color: #222;
+  background: #fff;
 }
