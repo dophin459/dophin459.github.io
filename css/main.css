@@ -1801,7 +1801,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #b821a3;
+  background: #2fffff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3041,11 +3041,8 @@ code {
   transform: rotate(360deg) scale(1.1);
 }
 .posts-expand .post-title {
-  font-weight: 500;
+  font-weight: 600;
   text-shadow: rgba(50,50,50,0.3) 1px 1px 2px;
-}
-.page-home .posts-expand .post-title {
-  font-weight: 600px;
 }
 .site-meta {
   background: none;
