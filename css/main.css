@@ -1801,7 +1801,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #fbfc38;
+  background: #dd1dff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3054,12 +3054,23 @@ code {
   font-size: 28px;
   font-weight: bolder;
 }
+@media (min-width: 768px) and (max-width: 991px) {
+  .site-meta {
+    box-shadow: none;
+  }
+}
+@media (max-width: 767px) {
+  .site-meta {
+    box-shadow: none;
+  }
+}
 .menu {
-  margin: 0;
-  padding: 0 0 15px 0;
+  margin: -15px 0 0 0;
+  padding: 0;
 }
 .menu .menu-item {
   display: inline-block;
+  padding: 15px 5px;
 }
 .menu .menu-item a {
   color: #ccc;
