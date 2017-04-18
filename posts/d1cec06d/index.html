@@ -105,19 +105,16 @@
 
 
 
-<meta name="description" content="接触以太坊有几个月了，这期间陆陆续续读了一些源码，阅读源码对深入理解以太坊和区块链的原理是非常有用的，通过阅读源码可以知道交易、区块等核心数据结构的组成，可以对区块链的底层实现原理和运行过程有一个更清晰的认识，很多不明确的问题都可以从源码中找到答案。
-网上以太坊的技术资料挺多的，但多数是关于智能合约和应用开发的，真正涉及底层实现和源码的很少。所以我想把自己阅读源码的学习心得总结记录下来，一是方便自">
+<meta name="description" content="交易是区块链中最基本也是最核心的一个概念，在以太坊中，交易更是重中之重，因为以太坊是一个智能合约平台，以太坊上的应用都是通过智能合约与区块链进行交互，而智能合约的执行是由交易触发的，没有交易，智能合约就是一段死的代码，可以说在以太坊中，一切都源于交易。下面就来看看在以太坊中交易是什么样的，交易里面都有什么。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="go-ethereum源码阅读环境搭建">
-<meta property="og:url" content="http://dophin459.coding.me/posts/2d535e99/index.html">
+<meta property="og:title" content="go-ethereum源码剖析：交易">
+<meta property="og:url" content="http://dophin459.coding.me/posts/d1cec06d/index.html">
 <meta property="og:site_name" content="zhangdf's Blog">
-<meta property="og:description" content="接触以太坊有几个月了，这期间陆陆续续读了一些源码，阅读源码对深入理解以太坊和区块链的原理是非常有用的，通过阅读源码可以知道交易、区块等核心数据结构的组成，可以对区块链的底层实现原理和运行过程有一个更清晰的认识，很多不明确的问题都可以从源码中找到答案。
-网上以太坊的技术资料挺多的，但多数是关于智能合约和应用开发的，真正涉及底层实现和源码的很少。所以我想把自己阅读源码的学习心得总结记录下来，一是方便自">
-<meta property="og:updated_time" content="2017-04-11T07:44:54.342Z">
+<meta property="og:description" content="交易是区块链中最基本也是最核心的一个概念，在以太坊中，交易更是重中之重，因为以太坊是一个智能合约平台，以太坊上的应用都是通过智能合约与区块链进行交互，而智能合约的执行是由交易触发的，没有交易，智能合约就是一段死的代码，可以说在以太坊中，一切都源于交易。下面就来看看在以太坊中交易是什么样的，交易里面都有什么。">
+<meta property="og:updated_time" content="2017-04-18T09:37:58.109Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="go-ethereum源码阅读环境搭建">
-<meta name="twitter:description" content="接触以太坊有几个月了，这期间陆陆续续读了一些源码，阅读源码对深入理解以太坊和区块链的原理是非常有用的，通过阅读源码可以知道交易、区块等核心数据结构的组成，可以对区块链的底层实现原理和运行过程有一个更清晰的认识，很多不明确的问题都可以从源码中找到答案。
-网上以太坊的技术资料挺多的，但多数是关于智能合约和应用开发的，真正涉及底层实现和源码的很少。所以我想把自己阅读源码的学习心得总结记录下来，一是方便自">
+<meta name="twitter:title" content="go-ethereum源码剖析：交易">
+<meta name="twitter:description" content="交易是区块链中最基本也是最核心的一个概念，在以太坊中，交易更是重中之重，因为以太坊是一个智能合约平台，以太坊上的应用都是通过智能合约与区块链进行交互，而智能合约的执行是由交易触发的，没有交易，智能合约就是一段死的代码，可以说在以太坊中，一切都源于交易。下面就来看看在以太坊中交易是什么样的，交易里面都有什么。">
 
 
 
@@ -145,13 +142,13 @@
 
 
 
-  <link rel="canonical" href="http://dophin459.coding.me/posts/2d535e99/"/>
+  <link rel="canonical" href="http://dophin459.coding.me/posts/d1cec06d/"/>
 
 
 
 
 
-  <title> go-ethereum源码阅读环境搭建 | zhangdf's Blog </title>
+  <title> go-ethereum源码剖析：交易 | zhangdf's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -312,7 +309,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://dophin459.coding.me/posts/2d535e99/">
+    <link itemprop="mainEntityOfPage" href="http://dophin459.coding.me/posts/d1cec06d/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="zhangdaofeng">
@@ -333,7 +330,7 @@
             
             
               
-                go-ethereum源码阅读环境搭建
+                go-ethereum源码剖析：交易
               
             
           </h1>
@@ -348,8 +345,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-11T15:38:58+08:00">
-                2017-04-11
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-18T17:31:10+08:00">
+                2017-04-18
               </time>
             
 
@@ -388,7 +385,7 @@
 
           
           
-             <span id="/posts/2d535e99/" class="leancloud_visitors" data-flag-title="go-ethereum源码阅读环境搭建">
+             <span id="/posts/d1cec06d/" class="leancloud_visitors" data-flag-title="go-ethereum源码剖析：交易">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -417,17 +414,29 @@
       
 
       
-        <p>接触以太坊有几个月了，这期间陆陆续续读了一些源码，阅读源码对深入理解以太坊和区块链的原理是非常有用的，通过阅读源码可以知道交易、区块等核心数据结构的组成，可以对区块链的底层实现原理和运行过程有一个更清晰的认识，很多不明确的问题都可以从源码中找到答案。</p>
-<p>网上以太坊的技术资料挺多的，但多数是关于智能合约和应用开发的，真正涉及底层实现和源码的很少。所以我想把自己阅读源码的学习心得总结记录下来，一是方便自己查阅，也可以给别人参考。</p>
-<p>本文介绍以太坊go-ethereum源码的阅读环境配置。以太坊有8种语言的实现，选择go-ethereum是因为它是以太坊的官方实现版本，包含了以太坊的所有特性，比较权威和全面，它是用go语言编写的，go语言学习起来比较容易，而且可读性也比较好。</p>
+        <p>交易是区块链中最基本也是最核心的一个概念，在以太坊中，交易更是重中之重，因为以太坊是一个智能合约平台，以太坊上的应用都是通过智能合约与区块链进行交互，而智能合约的执行是由交易触发的，没有交易，智能合约就是一段死的代码，可以说在以太坊中，一切都源于交易。下面就来看看在以太坊中交易是什么样的，交易里面都有什么。</p>
 <a id="more"></a>
-<p>阅读源码有一个代码编辑器就够了，但是为了更好的体验和更高的效率，还需要做一些配置，比如代码高亮、代码跳转等。</p>
-<h1 id="安装go语言"><a href="#安装go语言" class="headerlink" title="安装go语言"></a>安装go语言</h1><p>为了能支持代码跳转，需要安装go语言，安装教程参考<a href="http://dophin459.coding.me/posts/1c3f4ffd/">这篇文章</a>，其中最重要的是要保证正确设置了<code>GOPATH</code>，这样才能进行代码跳转。如果想学习go语言，可以看一下在线教程<a href="https://tour.golang.org/welcome/1" target="_blank" rel="external">A Tour of Go</a>，或者去看《The Go Programming Language》这本书。</p>
-<h1 id="配置编辑器"><a href="#配置编辑器" class="headerlink" title="配置编辑器"></a>配置编辑器</h1><p>看代码可以选择你喜欢的代码编辑器，我用的是Visual Studio Code，为了支持go语言代码高亮，需要安装一个插件。在vscode的插件面板中搜索lukehoban，安装即可。</p>
-<p>接下来安装一些go语言工具，在命令行中执行以下命令安装：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">go get -u -v github.com/nsf/gocode</div><div class="line">go get -u -v github.com/rogpeppe/godef</div><div class="line">go get -u -v github.com/zmb3/gogetdoc</div><div class="line">go get -u -v github.com/golang/lint/golint</div><div class="line">go get -u -v github.com/lukehoban/go-outline</div><div class="line">go get -u -v sourcegraph.com/sqs/goreturns</div><div class="line">go get -u -v golang.org/x/tools/cmd/gorename</div><div class="line">go get -u -v github.com/tpng/gopkgs</div><div class="line">go get -u -v github.com/acroca/go-symbols</div><div class="line">go get -u -v golang.org/x/tools/cmd/guru</div><div class="line">go get -u -v github.com/cweill/gotests/...</div><div class="line">go get -u -v golang.org/x/tools/cmd/godoc</div><div class="line">go get -u -v github.com/fatih/gomodifytags</div></pre></td></tr></table></figure></p>
-<h1 id="下载源码"><a href="#下载源码" class="headerlink" title="下载源码"></a>下载源码</h1><p>以太坊代码都托管在github上，它的代码经常更新，每次更新会加入一些新的东西，也可能改变代码的组织架构，所以最好选择一个稳定版阅读，目前最新的稳定版本是1.5.9，到<a href="https://github.com/ethereum/go-ethereum/releases" target="_blank" rel="external">这里</a>下载源码后，解压到<code>GOPATH/src/github.com/ethereum/go-ethereum</code>中，解压后目录结构应该是这样的：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">GOPATH/src</div><div class="line">├── github.com</div><div class="line">    └── ethereum</div><div class="line">        └── go-ethereum</div></pre></td></tr></table></figure></p>
-<p>路径和目录名一定要与上面的一致，不能放到其他地方或者改成其他名字，因为go语言是按照路径搜索包的。</p>
-<p>其实上面最重要的就是要正确设置了<code>GOPATH</code>，并且要把源码放到<code>GOPATH/src</code>中正确的路径中。接下来就可以开始阅读代码了。</p>
+<h1 id="交易的数据结构"><a href="#交易的数据结构" class="headerlink" title="交易的数据结构"></a>交易的数据结构</h1><p>在<code>core/types/transaction.go</code>中定义了交易的数据结构：<br><figure class="highlight go"><table><tr><td class="code"><pre><div class="line"><span class="keyword">type</span> Transaction <span class="keyword">struct</span> &#123;</div><div class="line">    data txdata</div><div class="line">    <span class="comment">// caches</span></div><div class="line">    hash atomic.Value</div><div class="line">    size atomic.Value</div><div class="line">    from atomic.Value</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在这个结构体里面只有一个<code>data</code>字段，它是<code>txdata</code>类型的，其他的三个字段<code>hash</code> <code>size</code> <code>from</code>是缓存字段，<code>txdata</code>也是一个结构体，它里面定义了交易的具体的字段：<br><figure class="highlight go"><table><tr><td class="code"><pre><div class="line"><span class="keyword">type</span> txdata <span class="keyword">struct</span> &#123;</div><div class="line">    AccountNonce    <span class="keyword">uint64</span></div><div class="line">    Price, GasLimit *big.Int</div><div class="line">    Recipient       *common.Address <span class="string">`rlp:"nil"`</span> <span class="comment">// nil means contract creation</span></div><div class="line">    Amount          *big.Int</div><div class="line">    Payload         []<span class="keyword">byte</span></div><div class="line">    V               *big.Int <span class="comment">// signature</span></div><div class="line">    R, S            *big.Int <span class="comment">// signature</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>各字段的含义如下：</p>
+<ul>
+<li><code>AccountNonce</code>：此交易的发送者已发送过的交易数</li>
+<li><code>Price</code>：此交易的gas price</li>
+<li><code>GasLimit</code>：本交易允许消耗的最大gas数量</li>
+<li><code>Recipient</code>：交易的接收者，是一个地址</li>
+<li><code>Amount</code>：交易转移的以太币数量，单位是<code>wei</code></li>
+<li><code>Payload</code>：交易可以携带的数据，在不同类型的交易中有不同的含义</li>
+<li><code>V R S</code>：交易的签名数据</li>
+</ul>
+<p><strong>注意：</strong>这里并没有一个字段来指明交易的发送者，因为交易的发送者地址可以从签名中得到。</p>
+<h1 id="交易的类型"><a href="#交易的类型" class="headerlink" title="交易的类型"></a>交易的类型</h1><p>在源码中交易只有一种数据结构，如果非要给交易分个类的话，我认为交易可以分为三种：转账的交易、创建合约的交易、执行合约的交易。web3.js提供了发送交易的接口：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">web3.eth.sendTransaction(transactionObject [, callback])</div></pre></td></tr></table></figure></p>
+<p>参数是一个对象，在发送交易的时候指定不同的字段，区块链节点就可以识别出对应类型的交易。</p>
+<h2 id="转账的交易"><a href="#转账的交易" class="headerlink" title="转账的交易"></a>转账的交易</h2><p>转账是最简单的一种交易，这里转账是指从一个账户向另一个账户发送以太币。发送转账交易的时候只需要指定交易的发送者、接收者、转币的数量。使用web3.js发送转账交易应该像这样：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">web3.eth.sendTransaction(&#123;</div><div class="line">    <span class="attr">from</span>: <span class="string">"0xb60e8dd61c5d32be8058bb8eb970870f07233155"</span>,</div><div class="line">    <span class="attr">to</span>: <span class="string">"0xd46e8dd67c5d32be8058bb8eb970870f07244567"</span>,</div><div class="line">    <span class="attr">value</span>: <span class="number">10000000000000000</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p><code>value</code>是转移的以太币数量，单位是<code>wei</code>，对应的是源码中的<code>Amount</code>字段。<code>to</code>对应的是源码中的<code>Recipient</code>。</p>
+<h2 id="创建合约的交易"><a href="#创建合约的交易" class="headerlink" title="创建合约的交易"></a>创建合约的交易</h2><p>创建合约指的是将合约部署到区块链上，这也是通过发送交易来实现。在创建合约的交易中，<code>to</code>字段要留空不填，在<code>data</code>字段中指定合约的二进制代码，<code>from</code>字段是交易的发送者也是合约的创建者。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">web3.eth.sendTransaction(&#123;</div><div class="line">    <span class="attr">from</span>: <span class="string">"contract creator's address"</span>,</div><div class="line">    <span class="attr">data</span>: <span class="string">"contract binary code"</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p><code>data</code>字段对应的是源码中的<code>Payload</code>字段。</p>
+<h2 id="执行合约的交易"><a href="#执行合约的交易" class="headerlink" title="执行合约的交易"></a>执行合约的交易</h2><p>调用合约中的方法，需要将交易的<code>to</code>字段指定为要调用的合约的地址，通过<code>data</code>字段指定要调用的方法以及向该方法传递的参数。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">web3.eth.sendTransaction(&#123;</div><div class="line">    <span class="attr">from</span>: <span class="string">"sender's address"</span>,</div><div class="line">    <span class="attr">to</span>: <span class="string">"contract address"</span>,</div><div class="line">    <span class="attr">data</span>: <span class="string">"hash of the invoked method signature and encoded parameters"</span></div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p><code>data</code>字段需要特殊的编码规则，具体细节可以参考<a href="https://github.com/ethereum/wiki/wiki/Ethereum-Contract-ABI" target="_blank" rel="external">Ethereum Contract ABI</a>。自己拼接字段既不方便又容易出错，所以一般都使用封装好的SDK来调用合约。</p>
 
       
     </div>
@@ -491,8 +500,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/posts/79b3ba3d/" rel="next" title="以太坊开发实战：通过truffle-contract与智能合约交互">
-                <i class="fa fa-chevron-left"></i> 以太坊开发实战：通过truffle-contract与智能合约交互
+              <a href="/posts/2d535e99/" rel="next" title="go-ethereum源码阅读环境搭建">
+                <i class="fa fa-chevron-left"></i> go-ethereum源码阅读环境搭建
               </a>
             
           </div>
@@ -500,10 +509,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/posts/d1cec06d/" rel="prev" title="go-ethereum源码剖析：交易">
-                go-ethereum源码剖析：交易 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -660,7 +665,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装go语言"><span class="nav-number">1.</span> <span class="nav-text">安装go语言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置编辑器"><span class="nav-number">2.</span> <span class="nav-text">配置编辑器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#下载源码"><span class="nav-number">3.</span> <span class="nav-text">下载源码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#交易的数据结构"><span class="nav-number">1.</span> <span class="nav-text">交易的数据结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#交易的类型"><span class="nav-number">2.</span> <span class="nav-text">交易的类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#转账的交易"><span class="nav-number">2.1.</span> <span class="nav-text">转账的交易</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建合约的交易"><span class="nav-number">2.2.</span> <span class="nav-text">创建合约的交易</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行合约的交易"><span class="nav-number">2.3.</span> <span class="nav-text">执行合约的交易</span></a></li></ol></li></ol></div>
             
 
           </div>

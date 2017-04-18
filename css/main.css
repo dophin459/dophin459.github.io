@@ -1801,7 +1801,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #c9fff2;
+  background: #dd3bff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3050,7 +3050,7 @@ code {
 }
 .site-meta {
   background: none;
-  padding: 10px 5px;
+  padding: 15px 5px;
 }
 .site-meta .site-title {
   font-size: 24px;
@@ -3098,7 +3098,7 @@ code {
 }
 .menu .menu-item {
   display: inline-block;
-  padding: 10px 5px;
+  padding: 15px 5px;
 }
 .menu .menu-item a {
   color: #fff;
