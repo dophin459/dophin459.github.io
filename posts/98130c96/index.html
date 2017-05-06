@@ -89,7 +89,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="以太坊,RLP," />
 
 
 
@@ -105,16 +105,16 @@
 
 
 
-<meta name="description" content="欢迎">
-<meta property="og:type" content="website">
-<meta property="og:title" content="关于">
-<meta property="og:url" content="http://dophin459.coding.me/about/index.html">
+<meta name="description" content="RLP(Recursive Length Prefix，递归长度前缀)是一种编码算法，用于编码任意的嵌套结构的二进制数据，它是以太坊中数据序列化/反序列化的主要方法，区块、交易等数据结构在持久化时会先经过RLP编码后再存储到数据库中。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="RLP编码原理">
+<meta property="og:url" content="http://dophin459.coding.me/posts/98130c96/index.html">
 <meta property="og:site_name" content="zhangdf's Blog">
-<meta property="og:description" content="欢迎">
-<meta property="og:updated_time" content="2017-04-09T11:27:42.011Z">
+<meta property="og:description" content="RLP(Recursive Length Prefix，递归长度前缀)是一种编码算法，用于编码任意的嵌套结构的二进制数据，它是以太坊中数据序列化/反序列化的主要方法，区块、交易等数据结构在持久化时会先经过RLP编码后再存储到数据库中。">
+<meta property="og:updated_time" content="2017-05-06T14:07:51.111Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关于">
-<meta name="twitter:description" content="欢迎">
+<meta name="twitter:title" content="RLP编码原理">
+<meta name="twitter:description" content="RLP(Recursive Length Prefix，递归长度前缀)是一种编码算法，用于编码任意的嵌套结构的二进制数据，它是以太坊中数据序列化/反序列化的主要方法，区块、交易等数据结构在持久化时会先经过RLP编码后再存储到数据库中。">
 
 
 
@@ -142,19 +142,13 @@
 
 
 
-  <link rel="canonical" href="http://dophin459.coding.me/about/"/>
+  <link rel="canonical" href="http://dophin459.coding.me/posts/98130c96/"/>
 
 
 
 
 
-  <title>
-  
-
-  
-    关于 | zhangdf's Blog
-  
-</title>
+  <title> RLP编码原理 | zhangdf's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -179,7 +173,7 @@
     
   
 
-  <div class="container sidebar-position-right  ">
+  <div class="container sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -306,18 +300,229 @@
             
 
   <div id="posts" class="posts-expand">
-  <header class="post-header">
+    
 
-	<h1 class="post-title" itemprop="name headline">关于</h1>
+  
 
+  
+  
+  
 
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://dophin459.coding.me/posts/98130c96/">
 
-</header>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zhangdaofeng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="zhangdf's Blog">
+    </span>
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                RLP编码原理
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-06T22:04:45+08:00">
+                2017-05-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/以太坊/" itemprop="url" rel="index">
+                    <span itemprop="name">以太坊</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/posts/98130c96/" class="leancloud_visitors" data-flag-title="RLP编码原理">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
     
+
+
+    <div class="post-body" itemprop="articleBody">
+
       
-    
+      
+
+      
+        <p>RLP(Recursive Length Prefix，递归长度前缀)是一种编码算法，用于编码任意的嵌套结构的二进制数据，它是以太坊中数据序列化/反序列化的主要方法，区块、交易等数据结构在持久化时会先经过RLP编码后再存储到数据库中。</p>
+<a id="more"></a>
+<h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><p>RLP编码的定义只处理两类数据：一类是字符串（例如字节数组），一类是列表。字符串指的是一串二进制数据，列表是一个嵌套递归的结构，里面可以包含字符串和列表，例如<code>[&quot;cat&quot;,[&quot;puppy&quot;,&quot;cow&quot;],&quot;horse&quot;,[[]],&quot;pig&quot;,[&quot;&quot;],&quot;sheep&quot;]</code>就是一个复杂的列表。其他类型的数据需要转成以上的两类，转换的规则不是RLP编码定义的，可以根据自己的规则转换，例如<code>struct</code>可以转成列表，<code>int</code>可以转成二进制（属于字符串一类），以太坊中整数都以大端形式存储。</p>
+<h1 id="RLP编码规则"><a href="#RLP编码规则" class="headerlink" title="RLP编码规则"></a>RLP编码规则</h1><ul>
+<li>对于单个字节，如果它的值范围是<code>[0x00, 0x7f]</code>，它的RLP编码就是它本身。</li>
+<li>否则，如果一个字符串的长度是0-55字节，它的RLP编码包含一个单字节的前缀，后面跟着字符串本身，这个前缀的值是<strong><code>0x80</code></strong>加上字符串的长度。由于被编码的字符串最大长度是<code>55=0x37</code>,因此单字节前缀的最大值是<code>0x80+0x37=0xb7</code>，即编码的第一个字节的取值范围是<code>[0x80, 0xb7]</code>。</li>
+<li>如果字符串的长度大于55个字节，它的RLP编码包含一个单字节的前缀，后面跟着字符串的长度，后面再跟着字符串本身。这个前缀的值是<strong><code>0xb7</code></strong>加上字符串长度的二进制形式的字节长度，说的有点绕，举个例子就明白了，例如一个字符串的长度是1024，它的二进制形式是<code>10000000000</code>，这个二进制形式的长度是2个字节，所以前缀应该是<code>0xb7+2=0xb9</code>，字符串长度<code>1024=0x400</code>，因此整个RLP编码应该是<code>\xb9\x04\x00</code>再跟上字符串本身。编码的第一个字节即前缀的取值范围是<code>[0xb8, 0xbf]</code>，因为字符串长度二进制形式最少是1个字节，因此最小值是<code>0xb7+1=0xb8</code>，字符串长度二进制最大是8个字节，因此最大值是<code>0xb7+8=0xbf</code>。</li>
+<li>如果一个列表的总长度（列表的总长度指的是它包含的项的数量加它包含的各项的长度之和）是0-55字节，它的RLP编码包含一个单字节的前缀，后面跟着列表中各元素项的RLP编码，这个前缀的值是<strong><code>0xc0</code></strong>加上列表的总长度。编码的第一个字节的取值范围是<code>[0xc0, 0xf7]</code>。</li>
+<li>如果一个列表的总长度大于55字节，它的RLP编码包含一个单字节的前缀，后面跟着列表的长度，后面再跟着列表中各元素项的RLP编码，这个前缀的值是<strong><code>0xf7</code></strong>加上列表总长度的二进制形式的字节长度。编码的第一个字节的取值范围是<code>[0xf8, 0xff]</code>。</li>
+</ul>
+<h1 id="RLP编码例子"><a href="#RLP编码例子" class="headerlink" title="RLP编码例子"></a>RLP编码例子</h1><ul>
+<li>字符串 <code>&quot;dog&quot; = [0x83, &#39;d&#39;, &#39;o&#39;, &#39;g&#39; ]</code> （规则二）</li>
+<li>列表 <code>[&quot;cat&quot;,&quot;dog&quot;] = [0xc8, 0x83, &#39;c&#39;, &#39;a&#39;, &#39;t&#39;, 0x83, &#39;d&#39;, &#39;o&#39;, &#39;g&#39; ]</code> （规则四）</li>
+<li>空字符串 <code>&quot;&quot; = 0x80</code> （规则二）</li>
+<li>空列表 <code>[] = [0xc0]</code> （规则四）</li>
+<li>整数 <code>15(&#39;\x0f&#39;) = 0x0f</code> （规则一）</li>
+<li>整数 <code>1024(&#39;\x04\00&#39;) = [0x82, 0x04, 0x00]</code> （规则二）</li>
+<li>列表 <code>[ [], [[]], [ [], [[]] ] ] = [0xc7, 0xc0, 0xc1, 0xc0, 0xc3, 0xc0, 0xc1, 0xc0]</code> （规则四）</li>
+<li>字符串 <code>&quot;Lorem ipsum dolor sit amet, consectetur adipisicing elit&quot; = [0xb8, 0x38, &#39;L&#39;, &#39;o&#39;, &#39;r&#39;, &#39;e&#39;, &#39;m&#39;, &#39; &#39;, ... , &#39;e&#39;, &#39;l&#39;, &#39;i&#39;, &#39;t&#39;]</code> （规则三）</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/uploads/wechatpay.png" alt="zhangdaofeng WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/uploads/alipay.jpg" alt="zhangdaofeng Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/以太坊/" rel="tag"># 以太坊</a>
+          
+            <a href="/tags/RLP/" rel="tag"># RLP</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/posts/62ef6528/" rel="next" title=" 在Linux上安装docker和docker-compose">
+                <i class="fa fa-chevron-left"></i>  在Linux上安装docker和docker-compose
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
   </div>
 
 
@@ -326,6 +531,12 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div id="uyan_frame"></div>
+    
+  </div>
+
 
         </div>
         
@@ -345,8 +556,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -434,6 +654,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#定义"><span class="nav-number">1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RLP编码规则"><span class="nav-number">2.</span> <span class="nav-text">RLP编码规则</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#RLP编码例子"><span class="nav-number">3.</span> <span class="nav-text">RLP编码例子</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -537,6 +773,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
@@ -568,6 +808,10 @@
   
     
 
+    
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2129040"></script>
+      <!-- UY END -->
     
   
 
