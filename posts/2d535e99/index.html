@@ -113,7 +113,7 @@
 <meta property="og:site_name" content="zhangdf's Blog">
 <meta property="og:description" content="阅读源码对深入理解以太坊和区块链的原理是非常有用的，通过阅读源码可以知道交易、区块等核心数据结构的组成，可以对区块链的底层实现原理和运行过程有一个更清晰的认识，很多不明确的问题都可以从源码中找到答案。
 网上以太坊的技术资料很多，但多数是关于智能合约和应用开发的，真正涉及底层实现和源码的很少。本文介绍以太坊go-ethereum源码的阅读环境配置，之后会陆续介绍一些源码阅读心得体会。以太坊有8种语言">
-<meta property="og:updated_time" content="2017-05-14T09:58:58.035Z">
+<meta property="og:updated_time" content="2017-05-14T11:13:51.007Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="go-ethereum源码阅读环境搭建">
 <meta name="twitter:description" content="阅读源码对深入理解以太坊和区块链的原理是非常有用的，通过阅读源码可以知道交易、区块等核心数据结构的组成，可以对区块链的底层实现原理和运行过程有一个更清晰的认识，很多不明确的问题都可以从源码中找到答案。
@@ -426,8 +426,9 @@
 <p>接下来安装一些go语言工具（有些需要翻墙），在命令行中执行以下命令安装：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">go get -u -v github.com/nsf/gocode</div><div class="line">go get -u -v github.com/rogpeppe/godef</div><div class="line">go get -u -v github.com/zmb3/gogetdoc</div><div class="line">go get -u -v github.com/golang/lint/golint</div><div class="line">go get -u -v github.com/lukehoban/go-outline</div><div class="line">go get -u -v sourcegraph.com/sqs/goreturns</div><div class="line">go get -u -v golang.org/x/tools/cmd/gorename</div><div class="line">go get -u -v github.com/tpng/gopkgs</div><div class="line">go get -u -v github.com/acroca/go-symbols</div><div class="line">go get -u -v golang.org/x/tools/cmd/guru</div><div class="line">go get -u -v github.com/cweill/gotests/...</div><div class="line">go get -u -v golang.org/x/tools/cmd/godoc</div><div class="line">go get -u -v github.com/fatih/gomodifytags</div></pre></td></tr></table></figure></p>
 <h1 id="下载源码"><a href="#下载源码" class="headerlink" title="下载源码"></a>下载源码</h1><p>以太坊代码都托管在github上，它的代码经常更新，每次更新会加入一些新的东西，也可能改变代码的组织架构，所以最好选择一个稳定版阅读，这里以1.5.9版本为例。</p>
 <p>首先在<code>GOPATH/src</code>下创建<code>github.com/ethereum</code>目录：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ mkdir -p <span class="variable">$GOPATH</span>/src/github.com/ethereum</div></pre></td></tr></table></figure></p>
-<p>然后进入上面创建的目录，下载go-ethereum项目源码：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> <span class="variable">$GOPATH</span>/src/github.com/ethereum</div><div class="line">$ git <span class="built_in">clone</span> https://github.com/ethereum/go-ethereum.git</div><div class="line">$ <span class="built_in">cd</span> go-ethereum</div><div class="line">$ git checkout v1.5.9</div><div class="line">``` </div><div class="line"></div><div class="line">上面通过`git <span class="built_in">clone</span>`下载源码，然后通过`git checkout`检出指定版本的代码，如果想使用其他版本，在`git checkout`中指定相应的版本号即可。</div><div class="line"></div><div class="line">下载完成后目录结构应该是这样的：</div></pre></td></tr></table></figure></p>
-<p>GOPATH/src<br>├── github.com<br>    └── ethereum<br>        └── go-ethereum<br>```</p>
+<p>然后进入上面创建的目录，下载go-ethereum项目源码：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> <span class="variable">$GOPATH</span>/src/github.com/ethereum</div><div class="line">$ git <span class="built_in">clone</span> https://github.com/ethereum/go-ethereum.git</div><div class="line">$ <span class="built_in">cd</span> go-ethereum</div><div class="line">$ git checkout v1.5.9</div></pre></td></tr></table></figure></p>
+<p>上面通过<code>git clone</code>下载源码，然后通过<code>git checkout</code>检出指定版本的代码，如果想使用其他版本，在<code>git checkout</code>中指定相应的版本号即可。</p>
+<p>下载完成后目录结构应该是这样的：<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">GOPATH/src</div><div class="line">├── github.com</div><div class="line">    └── ethereum</div><div class="line">        └── go-ethereum</div></pre></td></tr></table></figure></p>
 <p>路径和目录名一定要与上面的一致，不能放到其他地方或者改成其他名字，因为go语言是按照路径搜索包的。</p>
 <p>其实上面最重要的就是要正确设置了<code>GOPATH</code>，并且要把源码放到<code>GOPATH/src</code>中正确的路径中。接下来就可以开始阅读代码了。</p>
 
